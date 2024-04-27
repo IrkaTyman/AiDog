@@ -1,7 +1,7 @@
 import React from 'react';
-import { QueryClientProvider } from '@tanstack/react-query';
-import { queryClient } from '../../config/query';
+import { QueryClient, QueryClientProvider } from 'react-query';
 
+const queryClient = new QueryClient({});
 /**
  * Тестовая оболочка для работы React Query
  * @param component

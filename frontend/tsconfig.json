@@ -5,7 +5,7 @@
     "module": "ESNext",
     "target": "es5",
     "jsx": "react-jsx",
-    "baseUrl": "../../../Downloads/React-template-master",
+    "baseUrl": ".",
     "paths": {
       "@shared/*": ["./src/shared/*"],
       "@entities/*": ["./src/entities/*"],

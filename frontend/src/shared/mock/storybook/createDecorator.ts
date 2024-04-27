@@ -1,10 +1,10 @@
 import { Decorator } from '@storybook/react';
 import * as H from 'history';
 
-import { AxiosMockOptions } from '../axios';
 import { AxiosMockDecorator } from './AxiosMockDecorator';
 import { ResetAxiosMockDecorator } from './ResetAxiosMockDecorator';
 import { RouterDecorator } from './RouterDecorator';
+import { AxiosMockOptions } from '../axios';
 
 type WrapperOptions = Partial<{
     axiosMocks: AxiosMockOptions<unknown>[];

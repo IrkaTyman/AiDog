@@ -1,5 +1,5 @@
-import {QueryKey, UseQueryOptions} from '@tanstack/react-query';
-import {AxiosError} from 'axios';
+import { AxiosError } from 'axios';
+import { QueryKey, UseQueryOptions } from 'react-query';
 
 export type AxiosUseQueryOptions<
     TResponse,

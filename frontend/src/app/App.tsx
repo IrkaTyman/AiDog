@@ -1,13 +1,15 @@
 import './styles/index.css';
-import { useTranslation } from 'react-i18next';
+
+import { AuthContextProvider } from '@app/providers/AuthProvider/AuthProvider';
 
 import { AppRouter } from './providers/router/AppRouter';
 
 const App = () => {
-    const { t } = useTranslation();
     return (
         <div>
-            <AppRouter />
+            <AuthContextProvider>
+                <AppRouter />
+            </AuthContextProvider>
         </div>
     );
 };

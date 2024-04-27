@@ -1,3 +1,5 @@
+import path from 'path';
+
 import type { StorybookConfig } from '@storybook/react-webpack5';
 
 const config: StorybookConfig = {
@@ -39,5 +41,18 @@ const config: StorybookConfig = {
             }
         </style>
     `,
+    webpackFinal: async config => {
+        config.resolve!.alias = {
+            ...config.resolve!.alias,
+            '@shared': path.resolve(__dirname, '../../src/shared'),
+            '@entities': path.resolve(__dirname, '../../src/entities'),
+            '@features': path.resolve(__dirname, '../../src/features'),
+            '@widgets': path.resolve(__dirname, '../../src/widgets'),
+            '@pages': path.resolve(__dirname, '../../src/pages'),
+            '@app': path.resolve(__dirname, '../../src/app'),
+        };
+
+        return config;
+    },
 };
 export default config;
