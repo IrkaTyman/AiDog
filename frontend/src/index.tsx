@@ -19,7 +19,7 @@ root.render(
                 <ConfigProvider
                     theme={{
                         token: {
-                            fontFamily: 'Inter',
+                            fontFamily: 'SF-Pro-Display',
                         },
                         algorithm: theme.darkAlgorithm,
                     }}

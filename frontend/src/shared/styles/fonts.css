@@ -1,29 +1,29 @@
 @font-face {
-    font-family: "Inter";
-    src: url("@shared/assets/fonts/Inter-Regular.ttf") format("truetype");
+    font-family: "SF-Pro-Display";
+    src: url("@shared/assets/fonts/SF-Pro-Display-Regular.otf") format("opentype");
     font-weight: 400;
 }
 
 @font-face {
-    font-family: "Inter";
-    src: url("@shared/assets/fonts/Inter-Medium.ttf") format("truetype");
+    font-family: "SF-Pro-Display";
+    src: url("@shared/assets/fonts/SF-Pro-Display-Medium.otf") format("opentype");
     font-weight: 500;
 }
 
 @font-face {
-    font-family: "Inter";
-    src: url("@shared/assets/fonts/Inter-SemiBold.ttf") format("truetype");
+    font-family: "SF-Pro-Display";
+    src: url("@shared/assets/fonts/SF-Pro-Display-Semibold.otf") format("opentype");
     font-weight: 600;
 }
 
 @font-face {
-    font-family: "Inter";
-    src: url("@shared/assets/fonts/Inter-Bold.ttf") format("truetype");
+    font-family: "SF-Pro-Display";
+    src: url("@shared/assets/fonts/SF-Pro-Display-Bold.otf") format("opentype");
     font-weight: 700;
 }
 
 @font-face {
-    font-family: "Inter";
-    src: url("@shared/assets/fonts/Inter-Light.ttf") format("truetype");
+    font-family: "SF-Pro-Display";
+    src: url("@shared/assets/fonts/SF-Pro-Display-Light.otf") format("opentype");
     font-weight: 300;
 }
