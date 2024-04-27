@@ -1,0 +1,8 @@
+transformers
+torch
+fastapi
+re
+llama-cpp-python
+asyncio
+nltk
+string
