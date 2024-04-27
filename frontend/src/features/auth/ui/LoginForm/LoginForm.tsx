@@ -62,6 +62,7 @@ export const LoginForm: FC<Props> = typedMemo(function LoginForm({
 
                 <Form.Item className={styles.loginForm__button}>
                     <Button type="primary" htmlType="submit" size="large"
+                        style={{ width: '100%' }}
                         disabled={isLoading}
                     >
                         Авторизоваться
