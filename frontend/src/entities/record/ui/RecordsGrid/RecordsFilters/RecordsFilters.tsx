@@ -88,8 +88,9 @@ export const RecordsFilters: FC<Props> = typedMemo(function RecordsFilters({
                     }}
                     trigger={['click']}
                 >
-                    <Tag icon={<Plus />}>
-                        New Tag
+                    <Tag className={getBemClasses(styles, 'triggerFilter')}>
+                        <Plus />
+                        Фильтр по триггеру
                     </Tag>
                 </Dropdown>
             </div>

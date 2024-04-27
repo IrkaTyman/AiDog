@@ -10,6 +10,7 @@ import { TriggerType } from '@entities/record/model/TriggerType';
 import { useGetUser, UserHeader } from '@entities/user';
 
 import Stars from '@shared/assets/icons/Stars.svg';
+import GreetingBackground from '@shared/assets/images/greetingBackground.svg';
 import Warning from '@shared/assets/icons/Warning.svg';
 import { getBemClasses, typedMemo } from '@shared/lib';
 import { ClassNameProps, TestProps } from '@shared/types';
@@ -63,8 +64,9 @@ export const RecordsPage: FC<Props> = typedMemo(function RecordsPage({
             />
 
             <div className={getBemClasses(styles, 'greeting')}>
-                <Typography.Title>
-                    С возвращением, {user?.firstName}
+                <GreetingBackground className={getBemClasses(styles, 'greetingBackground')}/>
+                <Typography.Title className={getBemClasses(styles, 'greetingTitle')}>
+                    👋 С возвращением, {user?.firstName}
                 </Typography.Title>
 
                 <CreateRecordModal
@@ -83,10 +85,12 @@ export const RecordsPage: FC<Props> = typedMemo(function RecordsPage({
                 />
             </div>
 
-            <Typography.Title className={getBemClasses(styles, 'recordsTitle')}>
-                Список записей
-            </Typography.Title>
-            <RecordsGrid />
+            <div className={getBemClasses(styles, 'recordsContainer')}>
+                <Typography.Title className={getBemClasses(styles, 'recordsTitle')}>
+                    Список записей
+                </Typography.Title>
+                <RecordsGrid />
+            </div>
         </div>
     );
 });

@@ -60,7 +60,7 @@ export const RecordCard: FC<Props> = typedMemo(function RecordCard({
                         count={<>
                             <LeftText className={getBemClasses(styles, 'triggerIcon')} />
                             <Typography.Text>
-                                {-1}
+                                {record.commentsCount}
                             </Typography.Text>
                         </>}
                     />

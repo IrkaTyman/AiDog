@@ -24,6 +24,7 @@ export function getGetRecordsAxiosMock(): AxiosMockOptions<RecordViewDTO[]>[] {
                                 count: '3',
                             },
                         ],
+                        commentsCount: 10
                     },
                     {
                         id: '8f0493de-b1cd-4d57-b56f-4ac79c47dbf5',
@@ -40,6 +41,7 @@ export function getGetRecordsAxiosMock(): AxiosMockOptions<RecordViewDTO[]>[] {
                                 count: '3',
                             },
                         ],
+                        commentsCount: 1
                     },
                 ],
             },

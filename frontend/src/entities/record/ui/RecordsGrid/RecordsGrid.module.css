@@ -1,3 +1,15 @@
 .RecordsGrid {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    gap: 20px
+}
 
+
+.RecordsGrid__records {
+    overflow-y: scroll;
+    display: flex;
+    flex-direction: row;
+    gap: 45px;
+    flex-wrap: wrap;
 }
