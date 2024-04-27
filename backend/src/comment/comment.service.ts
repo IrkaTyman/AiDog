@@ -34,6 +34,15 @@ export class CommentService {
         return `This action returns all comment`;
     }
 
+    async getCountByRecord(recordId: string) {
+        const isRecordExist = await this.recordRepository.existsBy({id: recordId})
+
+        if (!isRecordExist)
+            throw new BadRequestException("The record doesn't exist!");
+
+        return await this.commentRepository.countBy({record: {id: recordId}});
+    }
+
     findOne(id: number) {
         return `This action returns a #${id} comment`;
     }
