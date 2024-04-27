@@ -26,6 +26,7 @@ export const RecordCard: FC<Props> = typedMemo(function RecordCard({
         >
             <div className={getBemClasses(styles, 'imageWrapper')}>
                 <Image
+                    preview={false}
                     className={getBemClasses(styles, 'image')}
                     src={record.previewSrc}
                     fallback=""

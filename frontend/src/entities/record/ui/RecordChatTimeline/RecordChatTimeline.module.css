@@ -1,0 +1,33 @@
+.RecordChatTimeline {
+    position: relative;
+    display: flex;
+    align-items: center;
+    background-position: center;
+    background-repeat: repeat-x;
+    background-size: contain;
+    width: 100%;
+    height: 13px;
+}
+
+.RecordChatTimeline__slider {
+    width: 100%;
+}
+
+.RecordChatTimeline__trigger {
+    width: 7px;
+    height: 7px;
+    transform: rotate(45deg);
+    position: absolute;
+}
+
+.RecordChatTimeline__trigger_type_bad {
+    background-color: var(--red-6);
+}
+
+.RecordChatTimeline__trigger_type_good {
+    background-color: var(--green-6);
+}
+
+.RecordChatTimeline__trigger_type_neutral {
+    background-color: var(--pink-5);
+}

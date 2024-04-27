@@ -1,0 +1,26 @@
+.RecordChatTimelineSlider .ant-slider-rail,
+.RecordChatTimelineSlider .ant-slider-track,
+.RecordChatTimelineSlider .ant-slider-step {
+    opacity: 0;
+}
+
+.RecordChatTimelineSlider .ant-slider-handle {
+    width: 10px;
+    height: 20px;
+}
+
+.RecordChatTimelineSlider .ant-slider-handle::after {
+    height: 20px;
+    width: 4px;
+    background-color: var(--yellow-6);
+    box-shadow: none;
+    border-radius: 5px;
+}
+
+.RecordChatTimelineSlider .ant-slider-handle:hover::after,
+.RecordChatTimelineSlider .ant-slider-handle:focus::after{
+    height: 25px;
+    width: 6px;
+    background-color: var(--yellow-6);
+    box-shadow: none;
+}
