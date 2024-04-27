@@ -1,5 +1,7 @@
 import { screen, render } from '@testing-library/react';
 
+import { getGetUserAxiosMock } from '@entities/user/mock/getGetUserAxiosMock';
+
 import {
     createWrapper,
     mockAxios,
@@ -10,9 +12,9 @@ import {
     restoreI18NextMock,
 } from '@shared/mock/i18n';
 
-import { LoginPage } from './LoginPage';
+import { UserHeader } from './UserHeader';
 
-describe('pages/auth/LoginPage', () => {
+describe('entities/user/UserHeader', () => {
     const wrapper = createWrapper({});
 
     beforeAll(() => {
@@ -26,7 +28,7 @@ describe('pages/auth/LoginPage', () => {
     });
 
     beforeEach(() => {
-        // mockAxios();
+        mockAxios(getGetUserAxiosMock());
     });
 
     afterEach(() => {
@@ -34,9 +36,9 @@ describe('pages/auth/LoginPage', () => {
     });
 
     it('Компонент появился в DOM дереве', async () => {
-        render(<LoginPage />, { wrapper });
+        render(<UserHeader />, { wrapper });
 
-        const component = await screen.findByTestId('LoginPage');
+        const component = await screen.findByTestId('UserHeader');
         expect(component).toBeInTheDocument();
     });
 });

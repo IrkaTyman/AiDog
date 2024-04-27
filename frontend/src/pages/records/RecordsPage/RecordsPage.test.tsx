@@ -10,9 +10,9 @@ import {
     restoreI18NextMock,
 } from '@shared/mock/i18n';
 
-import { LoginPage } from './LoginPage';
+import { RecordsPage } from './RecordsPage';
 
-describe('pages/auth/LoginPage', () => {
+describe('pages/record/RecordsPage', () => {
     const wrapper = createWrapper({});
 
     beforeAll(() => {
@@ -25,18 +25,14 @@ describe('pages/auth/LoginPage', () => {
         restoreI18NextMock();
     });
 
-    beforeEach(() => {
-        // mockAxios();
-    });
-
     afterEach(() => {
         resetAxiosMock();
     });
 
     it('Компонент появился в DOM дереве', async () => {
-        render(<LoginPage />, { wrapper });
+        render(<RecordsPage />, { wrapper });
 
-        const component = await screen.findByTestId('LoginPage');
+        const component = await screen.findByTestId('RecordsPage');
         expect(component).toBeInTheDocument();
     });
 });

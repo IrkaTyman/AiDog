@@ -1,5 +1,8 @@
 import { screen, render } from '@testing-library/react';
 
+import { getGetRecordsAxiosMock } from '@entities/record/mock/getGetRecordsAxiosMock';
+import { getGetTriggerTypesAxiosMock } from '@entities/record/mock/getGetTriggerTypesAxiosMock';
+
 import {
     createWrapper,
     mockAxios,
@@ -10,9 +13,9 @@ import {
     restoreI18NextMock,
 } from '@shared/mock/i18n';
 
-import { LoginPage } from './LoginPage';
+import { RecordsGrid } from './RecordsGrid';
 
-describe('pages/auth/LoginPage', () => {
+describe('entities/record/RecordsGrid', () => {
     const wrapper = createWrapper({});
 
     beforeAll(() => {
@@ -26,7 +29,10 @@ describe('pages/auth/LoginPage', () => {
     });
 
     beforeEach(() => {
-        // mockAxios();
+        mockAxios<any>([
+            ...getGetTriggerTypesAxiosMock(),
+            ...getGetRecordsAxiosMock(),
+        ]);
     });
 
     afterEach(() => {
@@ -34,9 +40,9 @@ describe('pages/auth/LoginPage', () => {
     });
 
     it('Компонент появился в DOM дереве', async () => {
-        render(<LoginPage />, { wrapper });
+        render(<RecordsGrid />, { wrapper });
 
-        const component = await screen.findByTestId('LoginPage');
+        const component = await screen.findByTestId('RecordsGrid');
         expect(component).toBeInTheDocument();
     });
 });
