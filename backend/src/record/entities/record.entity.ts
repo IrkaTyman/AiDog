@@ -2,6 +2,7 @@ import {Column, Entity, JoinColumn, OneToMany, PrimaryGeneratedColumn} from "typ
 import {Comment} from "../../comment/entities/comment.entity";
 import {RecordTrigger} from "../../record_triggers/entities/record_trigger.entity";
 import {Report} from "../../report/entities/report.entity";
+import {Result} from "../../result/entities/result.entity";
 
 
 export enum RecordStatus {
@@ -37,4 +38,8 @@ export class Record {
     @OneToMany(() => Report, (report) => report.record, {nullable: true})
     @JoinColumn({name: 'reports'})
     reports: Report[]
+
+    @OneToMany(() => Result, (result) => result.record, {nullable: true})
+    @JoinColumn({name: 'results'})
+    results: Result[]
 }

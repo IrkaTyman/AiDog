@@ -1,9 +1,9 @@
-import { http } from '@shared/config/axios';
-import { extractData } from '@shared/lib';
+import {http} from '@shared/config/axios';
+import {extractData} from '@shared/lib';
 
-import { RecordStatus } from '../model/RecordStatus';
-import { RecordViewDTO } from '../model/RecordViewDTO';
-import { TriggerTypeDTO } from '../model/TriggerTypeDTO';
+import {RecordStatus} from '../model/RecordStatus';
+import {RecordViewDTO} from '../model/RecordViewDTO';
+import {TriggerTypeDTO} from '../model/TriggerTypeDTO';
 
 export function getRecords(
     status: RecordStatus,
@@ -11,7 +11,7 @@ export function getRecords(
 ): Promise<RecordViewDTO[]> {
     const filters: {status?: RecordStatus; triggers?: string[]} = {};
 
-    if (status) {
+    if (status && status !== RecordStatus.All) {
         filters.status = status;
     }
     if (triggersIds.length > 0) {

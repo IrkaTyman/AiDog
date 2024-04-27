@@ -34,15 +34,12 @@ export const UserHeader: FC<Props> = typedMemo(function UserHeader({
         { key: 'settings', label: <Link to="/admin/triggers">Настройки</Link> },
         {
             key: 'logout',
-            label: <Button
-                type="text"
-                danger
-                size="small"
+            label: <div
                 className={getBemClasses(styles, 'logout')}
                 onClick={onLogout}
             >
                 Выйти
-            </Button>,
+            </div>,
         },
     ]), [onLogout]);
 
@@ -52,7 +49,7 @@ export const UserHeader: FC<Props> = typedMemo(function UserHeader({
             data-testid={dataTestId}
         >
             <div className={getBemClasses(styles, 'logo')}>
-                <Link to="/record">
+                <Link to="/record?status=all">
                     <Logo className={getBemClasses(styles, 'logoIcon')} />
                 </Link>
             </div>

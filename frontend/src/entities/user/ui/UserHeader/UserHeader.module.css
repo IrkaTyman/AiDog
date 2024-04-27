@@ -44,3 +44,10 @@
     font-size: 14px;
     font-weight: var(--font-weight-bold);
 }
+
+
+.UserHeader__logout {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

@@ -1,4 +1,4 @@
-import { Slider, SliderSingleProps } from 'antd';
+import {Slider, SliderSingleProps, Tooltip} from 'antd';
 import { FC, useEffect, useMemo, useRef, useState } from 'react';
 
 import { RecordDTO } from '@entities/record/model/RecordDTO';
@@ -45,7 +45,7 @@ export const RecordChatTimeline: FC<Props> = typedMemo(function RecordChatTimeli
                 value={index}
                 onChange={setIndex}
                 min={1}
-                tooltip={{ formatter: null, trigger: 'contextMenu', overlayStyle: { opacity: 0 } }}
+                tooltip={{open: true}}
                 max={comments.length}
             />
             {comments.map((comments, i) => (

@@ -23,6 +23,10 @@
     position: absolute;
 }
 
+.RecordChatTimeline__tooltip {
+    display: none;
+}
+
 .RecordChatTimeline__trigger_type_bad {
     background-color: var(--red-6);
 }

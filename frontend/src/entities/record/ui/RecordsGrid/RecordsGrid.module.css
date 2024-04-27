@@ -12,4 +12,5 @@
     flex-direction: row;
     gap: 20px;
     flex-wrap: wrap;
+    height: calc(100vh - 65px - 200px - 60px);
 }

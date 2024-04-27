@@ -30,6 +30,7 @@ export const RecordsFilters: FC<Props> = typedMemo(function RecordsFilters({
     const { data: types } = useGetTriggerTypes();
 
     const [statusOptions] = useState<SelectProps['options']>([
+        { label: 'Все', value: RecordStatus.All },
         { label: 'Не просмотренные', value: RecordStatus.New },
         { label: 'Просмотренные', value: RecordStatus.Old },
     ]);
@@ -98,6 +99,7 @@ export const RecordsFilters: FC<Props> = typedMemo(function RecordsFilters({
 
             <div>
                 <Select
+                    defaultValue={"all"}
                     value={status}
                     style={{ width: 200 }}
                     onChange={setStatus}

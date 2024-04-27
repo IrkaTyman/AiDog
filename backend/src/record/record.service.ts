@@ -7,6 +7,7 @@ import {CommentService} from "../comment/comment.service";
 import {RecordTrigger} from "../record_triggers/entities/record_trigger.entity";
 import {Trigger} from "../trigger/entities/trigger.entity";
 import {GetRecordsDto} from "./dto/get-records.dto";
+import {ResultService} from "../result/result.service";
 
 @Injectable()
 export class RecordService {
@@ -18,6 +19,7 @@ export class RecordService {
         @InjectRepository(RecordTrigger)
         private readonly recordTriggerRepository: Repository<RecordTrigger>,
         private readonly commentService: CommentService,
+        private readonly resultService: ResultService,
     ) {
     }
 
@@ -29,6 +31,30 @@ export class RecordService {
             name: createRecordDto.name,
             previewSrc: createRecordDto.previewSrc
         });
+
+        let results = await fetch(
+            "http://89.208.216.16/make_conclusions", {
+                method: "post",
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    comments
+                })
+            })
+            .then(response => response.json())
+            .then(result => result)
+            .catch(error => {
+                throw new BadRequestException()
+            })
+
+        for (let result in results) {
+            await this.resultService.create({
+                result,
+                recordId: newRecord.id
+            })
+        }
 
         let commentsWithTriggers = await fetch(
             "http://89.208.216.16/process_comments", {
@@ -76,7 +102,7 @@ export class RecordService {
     async findAll(getRecordsDto: GetRecordsDto) {
         const records =  await this.recordRepository.find({
             where: {
-                status: getRecordsDto.status,
+                status: getRecordsDto.status ? getRecordsDto.status : undefined,
                 triggers: getRecordsDto.triggers ? {
                     trigger: {
                         id: In(getRecordsDto.triggers)
@@ -86,8 +112,10 @@ export class RecordService {
             relations: {
                 triggers: {
                     trigger: true
-                }
-            }
+                },
+                results: true
+            },
+
         })
 
         const result = []
@@ -130,8 +158,10 @@ export class RecordService {
                 },
                 reports: {
                     user: true
-                }
-            }
+                },
+                results: true
+            },
+            order: {comments: {time: "asc"}}
         });
 
         const triggersCount = await this.recordTriggerRepository.query(
