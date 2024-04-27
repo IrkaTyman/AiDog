@@ -1,4 +1,13 @@
-import {Column, CreateDateColumn, Entity, PrimaryGeneratedColumn, UpdateDateColumn} from "typeorm";
+import {
+    Column,
+    CreateDateColumn,
+    Entity,
+    JoinColumn,
+    OneToMany,
+    PrimaryGeneratedColumn,
+    UpdateDateColumn
+} from "typeorm";
+import {Report} from "../../report/entities/report.entity"
 
 @Entity()
 export class User {
@@ -25,4 +34,8 @@ export class User {
 
     @UpdateDateColumn()
     updated_at: Date;
+
+    @OneToMany(() => Report, (report) => report.id, {nullable: true})
+    @JoinColumn({name: 'reports'})
+    reports: Report[]
 }

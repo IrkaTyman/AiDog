@@ -26,4 +26,11 @@ export class UserController {
     findOneByLogin(@Param('login') login: string) {
         return this.userService.findOne(login);
     }
+
+    @Get('/:profile')
+    @UsePipes(new ValidationPipe())
+    @UseGuards(JwtAuthGuard)
+    findOneByToken(@Req() req) {
+        return this.userService.findOne(req.user.email);
+    }
 }
