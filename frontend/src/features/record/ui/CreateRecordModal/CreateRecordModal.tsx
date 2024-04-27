@@ -35,7 +35,8 @@ export const CreateRecordModal: FC<Props> = typedMemo(function CreateRecordModal
         setIsModalOpen(false);
     }, []);
 
-    const onSubmit = useCallback((form: CreateRecordModel) => {
+    const onSubmit = useCallback((text: string) => {
+        const form = JSON.parse(text) as CreateRecordModel;
         create(form);
     }, [create]);
 
@@ -59,14 +60,10 @@ export const CreateRecordModal: FC<Props> = typedMemo(function CreateRecordModal
                     disabled={isLoading}
                 >
                     <Form.Item
-                        name="name"
+                        name="json"
                         rules={[{ required: true, message: 'Поле обязательно для ввода!' }]}
                     >
-                        <Input placeholder="Введите название записи" size="large" />
-                    </Form.Item>
-
-                    <Form.Item name="previewSrc">
-                        <Input placeholder="Вставьте ссылку на превью" size="large" />
+                        <Input.TextArea placeholder="Введите json записи" size="large" />
                     </Form.Item>
 
                     <Form.Item className={getBemClasses(styles, 'ButtonContainer')}>

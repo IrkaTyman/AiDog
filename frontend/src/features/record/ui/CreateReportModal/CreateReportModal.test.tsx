@@ -1,4 +1,5 @@
 import { screen, render } from '@testing-library/react';
+import { Button } from 'antd';
 
 import {
     createWrapper,
@@ -21,20 +22,11 @@ describe('features/record/CreateReportModal', () => {
     });
 
     afterAll(() => {
-        restoreAxiosMock();
         restoreI18NextMock();
     });
 
-    beforeEach(() => {
-        mockAxios();
-    });
-
-    afterEach(() => {
-        resetAxiosMock();
-    });
-
     it('Компонент появился в DOM дереве', async () => {
-        render(<CreateReportModal />, { wrapper });
+        render(<CreateReportModal recordId={''} triggerComponent={open => null} />, { wrapper });
 
         const component = await screen.findByTestId('CreateReportModal');
         expect(component).toBeInTheDocument();

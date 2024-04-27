@@ -21,20 +21,11 @@ describe('features/record/CreateTriggerModal', () => {
     });
 
     afterAll(() => {
-        restoreAxiosMock();
         restoreI18NextMock();
     });
 
-    beforeEach(() => {
-        mockAxios();
-    });
-
-    afterEach(() => {
-        resetAxiosMock();
-    });
-
     it('Компонент появился в DOM дереве', async () => {
-        render(<CreateTriggerModal />, { wrapper });
+        render(<CreateTriggerModal triggerComponent={open => null} />, { wrapper });
 
         const component = await screen.findByTestId('CreateTriggerModal');
         expect(component).toBeInTheDocument();
