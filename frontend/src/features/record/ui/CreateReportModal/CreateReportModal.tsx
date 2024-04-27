@@ -47,7 +47,7 @@ export const CreateReportModal: FC<Props> = typedMemo(function CreateReportModal
         <>
             {triggerComponent(open)}
             <Modal
-                title="Анализ записи"
+                title="Создание отчета"
                 open={isModalOpen}
                 onOk={close}
                 onCancel={close}
