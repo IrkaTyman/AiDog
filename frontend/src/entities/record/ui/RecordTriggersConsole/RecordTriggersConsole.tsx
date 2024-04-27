@@ -33,7 +33,7 @@ export const RecordTriggersConsole: FC<Props> = typedMemo(function RecordTrigger
                         : comment.triggers.map(trigger => (
                             <div className={getBemClasses(styles, 'trigger')}>
                                 <div className={getBemClasses(styles, 'triggerTitle')}>
-                                    <div className={getBemClasses(styles, 'indicator')} />
+                                    <div className={getBemClasses(styles, 'indicator')} style={{ backgroundColor: trigger.trigger.color }} />
                                     <p className={getBemClasses(styles, 'name')}>{trigger.trigger.name}</p>
                                 </div>
                                 <p className={getBemClasses(styles, 'time')}>{comment.time}</p>

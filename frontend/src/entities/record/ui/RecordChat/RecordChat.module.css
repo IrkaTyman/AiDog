@@ -34,14 +34,14 @@
 .RecordChat__info {
     display: flex;
     justify-content: space-between;
-    gap: var(--space-xs);
+    gap: 5px;
 }
 
 .RecordChat__user,
 .RecordChat__time {
     color: var(--grey-7);
     font-weight: 700;
-    font-size: var(--font-size-xs)
+    font-size: 12px;
 }
 
 .RecordChat__message {

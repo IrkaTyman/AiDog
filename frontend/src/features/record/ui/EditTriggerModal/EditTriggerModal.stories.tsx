@@ -23,6 +23,7 @@ export const Default: Story = {
             description: '',
             color: '',
             type: TriggerType.Good,
+            examples: '',
         },
     },
 };

@@ -36,7 +36,7 @@ export const RecordTriggersCounts: FC<Props> = typedMemo(function RecordTriggers
                 }
                 return (
                     <div className={getBemClasses(styles, 'countItem')}>
-                        <div className={getBemClasses(styles, 'colorIndicator', { type: trigger.type })} />
+                        <div className={getBemClasses(styles, 'colorIndicator')} style={{ backgroundColor: trigger.color }} />
                         <p className={getBemClasses(styles, 'name')}>{trigger.name}:</p>
                         <p className={getBemClasses(styles, 'count')}>{triggerCount.count}</p>
                     </div>

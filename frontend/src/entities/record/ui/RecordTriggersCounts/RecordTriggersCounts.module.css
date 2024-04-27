@@ -17,21 +17,9 @@
     border-radius: 100%;
 }
 
-.RecordTriggersCounts__colorIndicator_type_bad {
-    background-color: var(--red-6)
-}
-
-.RecordTriggersCounts__colorIndicator_type_good {
-    background-color: var(--green-6)
-}
-
-.RecordTriggersCounts__colorIndicator_type_neutral {
-    background-color: var(--pink-5)
-}
-
 .RecordTriggersCounts .RecordTriggersCounts__name {
     margin: 0;
-    margin-right: 4px;
+    margin-right: 6px;
     color: var(--grey-6);
 }
 
