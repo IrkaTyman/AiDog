@@ -23,7 +23,7 @@ describe('entities/record/RecordTriggersCounts', () => {
     });
 
     it('Компонент появился в DOM дереве', async () => {
-        render(<RecordTriggersCounts />, { wrapper });
+        render(<RecordTriggersCounts triggersCount={[]} />, { wrapper });
 
         const component = await screen.findByTestId('RecordTriggersCounts');
         expect(component).toBeInTheDocument();

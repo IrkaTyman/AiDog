@@ -21,20 +21,11 @@ describe('entities/record/RecordTriggersConsole', () => {
     });
 
     afterAll(() => {
-        restoreAxiosMock();
         restoreI18NextMock();
     });
 
-    beforeEach(() => {
-        mockAxios();
-    });
-
-    afterEach(() => {
-        resetAxiosMock();
-    });
-
     it('Компонент появился в DOM дереве', async () => {
-        render(<RecordTriggersConsole />, { wrapper });
+        render(<RecordTriggersConsole comments={[]} />, { wrapper });
 
         const component = await screen.findByTestId('RecordTriggersConsole');
         expect(component).toBeInTheDocument();
