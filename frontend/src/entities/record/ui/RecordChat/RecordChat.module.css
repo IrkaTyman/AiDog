@@ -1,0 +1,49 @@
+.RecordChat {
+    max-height: 100%;
+    overflow: hidden;
+    background-color: var(--grey-12);
+    display: flex;
+    flex-direction: column;
+    border-radius: var(--border-radius-l);
+}
+
+.RecordChat .RecordChat__title {
+    font-size: var(--font-size-l);
+    color: var(--grey-6);
+    padding: var(--space-l);
+    margin: 0;
+    text-align: center;
+    width: 100%;
+    border-bottom: 1px solid var(--grey-10);
+}
+
+.RecordChat__scrollBox {
+    flex: 1;
+    overflow: auto;
+    padding: var(--space-l);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-l);
+}
+
+.RecordChat__comment {
+    display: flex;
+    flex-direction: column;
+}
+
+.RecordChat__info {
+    display: flex;
+    justify-content: space-between;
+    gap: var(--space-xs);
+}
+
+.RecordChat__user,
+.RecordChat__time {
+    color: var(--grey-7);
+    font-weight: 700;
+    font-size: var(--font-size-xs)
+}
+
+.RecordChat__message {
+    color: var(--grey-1)
+}

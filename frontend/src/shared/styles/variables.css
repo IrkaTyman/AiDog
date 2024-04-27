@@ -1,3 +1,21 @@
 :root {
-    --font-size-m: 16px;
+    --font-size-xs: 10px;
+    --font-size-s: 12px;
+    --font-size-m: 14px;
+    --font-size-l: 20px;
+
+    --space-xs: 4px;
+    --space-s: 8px;
+    --space-m: 16px;
+    --space-l: 20px;
+
+    --grey-1: #ffffff;
+    --grey-6: #bfbfbf;
+    --grey-7: #8c8c8c;
+    --grey-10: #262626;
+    --grey-12: #141414;
+
+    --border-radius-l: 20px;
+    --border-radius-m: 10px;
+    --border-radius-s: 5px;
 }

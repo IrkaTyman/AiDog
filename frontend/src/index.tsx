@@ -9,12 +9,20 @@ import { QueryClientProvider } from 'react-query';
 
 import { queryClient } from './shared/config/query';
 
+import { ConfigProvider, theme } from 'antd';
+
 const root = createRoot(document.getElementById('root')!);
 root.render(
     <ErrorBoundary>
         <BrowserRouter>
             <QueryClientProvider client={queryClient}>
-                <App />
+                <ConfigProvider
+                    theme={{
+                        algorithm: theme.darkAlgorithm,
+                    }}
+                >
+                    <App />
+                </ConfigProvider>
             </QueryClientProvider>
         </BrowserRouter>
     </ErrorBoundary>,
