@@ -1,4 +1,4 @@
-import { FC, useCallback, useMemo } from 'react';
+import { FC, useCallback, useEffect, useMemo } from 'react';
 
 import { useGetRecords } from '@entities/record/lib/useGetRecords';
 import { RecordStatus } from '@entities/record/model/RecordStatus';
@@ -27,6 +27,10 @@ export const RecordsGrid: FC<Props> = typedMemo(function RecordsGrid({
     }, []);
 
     const { data: records } = useGetRecords({ status: parsedStatus, triggers: parsedTriggers });
+
+    useEffect(() => {
+        setStatus(RecordStatus.New);
+    }, []);
 
     return (
         <div

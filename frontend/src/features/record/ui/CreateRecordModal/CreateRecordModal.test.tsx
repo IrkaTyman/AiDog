@@ -1,4 +1,5 @@
 import { screen, render } from '@testing-library/react';
+import { Button } from 'antd';
 
 import {
     createWrapper,
@@ -8,9 +9,9 @@ import {
     restoreI18NextMock,
 } from '@shared/mock/i18n';
 
-import { RecordChat } from './RecordChat';
+import { CreateRecordModal } from './CreateRecordModal';
 
-describe('entities/record/RecordChat', () => {
+describe('features/record/CreateRecordModal', () => {
     const wrapper = createWrapper({});
 
     beforeAll(() => {
@@ -23,9 +24,9 @@ describe('entities/record/RecordChat', () => {
     });
 
     it('Компонент появился в DOM дереве', async () => {
-        render(<RecordChat comments={[]} />, { wrapper });
+        render(<CreateRecordModal triggerComponent={open => <Button onClick={open}>Click</Button>} />, { wrapper });
 
-        const component = await screen.findByTestId('RecordChat');
+        const component = await screen.findByTestId('CreateRecordModal');
         expect(component).toBeInTheDocument();
     });
 });
