@@ -28,10 +28,11 @@ export const RecordChatTimeline: FC<Props> = typedMemo(function RecordChatTimeli
     const pathWidth = useMemo(() => maxWidth / (comments.length - 1), [maxWidth, comments]);
 
     useEffect(() => {
-        setMaxWidth(sliderWrapper.current?.clientWidth ?? 0);
+        setTimeout(() => {
+            setMaxWidth(sliderWrapper.current?.clientWidth ?? 0);
+        }, 1000);
     }, [sliderWrapper]);
 
-    console.log(maxWidth, pathWidth, pathWidth * comments.length);
     return (
         <div
             className={getBemClasses(styles, null, null, className)}
@@ -51,7 +52,7 @@ export const RecordChatTimeline: FC<Props> = typedMemo(function RecordChatTimeli
                 comments.triggers.length === 0
                     ? null
                     : <div
-                        style={{ left: `${pathWidth * i - (i > 0 ? 3.5 : 0)}px` }}
+                        style={{ left: `${pathWidth * i - 3.5}px` }}
                         className={getBemClasses(styles, 'trigger', { type: comments.triggers[0].trigger.type })}
                     />
             ))}

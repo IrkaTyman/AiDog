@@ -7,6 +7,8 @@
 .RecordChatTimelineSlider .ant-slider-handle {
     width: 10px;
     height: 20px;
+    top: -3px;
+    margin-left: 3px;
 }
 
 .RecordChatTimelineSlider .ant-slider-handle::after {
@@ -17,10 +19,14 @@
     border-radius: 5px;
 }
 
+.RecordChatTimelineSlider .ant-slider-handle:hover {
+    top: -5px;
+}
+
 .RecordChatTimelineSlider .ant-slider-handle:hover::after,
 .RecordChatTimelineSlider .ant-slider-handle:focus::after{
     height: 25px;
-    width: 6px;
+    width: 5px;
     background-color: var(--yellow-6);
     box-shadow: none;
 }
