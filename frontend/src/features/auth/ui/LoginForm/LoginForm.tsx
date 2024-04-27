@@ -21,11 +21,10 @@ export const LoginForm: FC<Props> = typedMemo(function LoginForm({
     'data-testid': dataTestId = 'LoginForm',
 }) {
     const navigate = useNavigate();
-    // const { login: loginApp } = useAuthContext();
+    const { login: loginApp } = useAuthContext();
     const { mutate: login, isLoading } = useLogin({
         onSuccess: data => {
-            localStorage.setItem('token', data.accessToken);
-            // loginApp();
+            loginApp(data);
             navigate('/home');
         },
     });
