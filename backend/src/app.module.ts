@@ -9,6 +9,7 @@ import {RecordModule} from './record/record.module';
 import { CommentModule } from './comment/comment.module';
 import { TriggerModule } from './trigger/trigger.module';
 import { RecordTriggersModule } from './record_triggers/record_triggers.module';
+import { ReportModule } from './report/report.module';
 
 @Module({
     imports: [
@@ -33,6 +34,7 @@ import { RecordTriggersModule } from './record_triggers/record_triggers.module';
         CommentModule,
         TriggerModule,
         RecordTriggersModule,
+        ReportModule,
     ],
     controllers: [AppController],
     providers: [AppService],

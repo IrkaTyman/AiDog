@@ -1,0 +1,12 @@
+.loginForm {
+    display: flex;
+}
+
+.loginForm__form {
+    width: 300px;
+}
+
+.loginForm__button {
+    display: flex;
+    justify-content: center;
+}

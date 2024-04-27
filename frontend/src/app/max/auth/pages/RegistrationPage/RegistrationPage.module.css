@@ -1,0 +1,48 @@
+.registrationPage {
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.registrationPage__additionalContainer {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.registrationPage__additionalContainerItem {
+    display: flex;
+    gap: 10px;
+    justify-content: end;
+    align-items: center;
+}
+
+.registrationPage__logo {
+    width: 128px;
+    height: 128px;
+}
+
+.registrationPage__titleContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.registrationPage__description {
+    text-align: center;
+    color: var(--color-white-100);
+    font-weight: 400;
+    font-size: 16px;
+}
+

@@ -1,0 +1,15 @@
+.registrationForm {
+    display: flex;
+}
+
+.registrationForm__form {
+    --login-form-width: 300px;
+
+    width: var(--login-form-width);
+}
+
+.registrationForm__buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
