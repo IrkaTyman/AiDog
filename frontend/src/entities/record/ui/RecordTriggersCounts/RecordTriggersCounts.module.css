@@ -1,3 +1,42 @@
 .RecordTriggersCounts {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding: 26px 20px;
+}
 
+.RecordTriggersCounts__countItem {
+    display: flex;
+    align-items: center;
+}
+
+.RecordTriggersCounts__colorIndicator {
+    margin-right: 10px;
+    width: 9px;
+    height: 9px;
+    border-radius: 100%;
+}
+
+.RecordTriggersCounts__colorIndicator_type_bad {
+    background-color: var(--red-6)
+}
+
+.RecordTriggersCounts__colorIndicator_type_good {
+    background-color: var(--green-6)
+}
+
+.RecordTriggersCounts__colorIndicator_type_neutral {
+    background-color: var(--pink-5)
+}
+
+.RecordTriggersCounts .RecordTriggersCounts__name {
+    margin: 0;
+    margin-right: 4px;
+    color: var(--grey-6);
+}
+
+.RecordTriggersCounts .RecordTriggersCounts__count {
+    font-weight: var(--font-weight-semibold);
+    color: var(--grey-1);
+    margin: 0;
 }

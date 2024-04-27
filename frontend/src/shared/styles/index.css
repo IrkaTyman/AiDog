@@ -1,2 +1,7 @@
 @import url("normilize.css");
 @import url("variables.css");
+@import url("fonts.css");
+
+* {
+    font-family: 'Inter', sans-serif !important;
+}

@@ -44,32 +44,30 @@ export const RecordPage: FC<Props> = typedMemo(function RecordPage({
                             index={commentIndex}
                             setIndex={setCommentIndex}
                         />
+                    </div>
 
-                        <div className={getBemClasses(styles, 'innerGrid')}>
-                            <div className={getBemClasses(styles, 'column')}>
-                                <div className={getBemClasses(styles, 'consoleWrapper')}>
-                                    <Typography.Title className={getBemClasses(styles, 'consoleTitle')}>
-                                        Консоль триггеров
-                                    </Typography.Title>
-                                    <RecordTriggersConsole comments={record?.comments ?? []} />
-                                </div>
-                                <div>
+                    <div className={getBemClasses(styles, 'innerGrid')}>
+                        <RecordTriggersConsole comments={record?.comments ?? []} />
 
-                                </div>
-                            </div>
-                            <div className={getBemClasses(styles, 'column')}>
-                                <div className={getBemClasses(styles, 'statisticsWrapper')}>
-                                    <Typography.Title className={getBemClasses(styles, 'statisticsTitle')}>
-                                        Частота повторений
-                                    </Typography.Title>
-                                    <RecordTriggersCounts triggersCount={record?.triggersCount ?? []} />
-                                </div>
-
-                                <Button type="primary" color="#9254de">
-                                    Отправить отчет
-                                </Button>
-                            </div>
+                        <div className={getBemClasses(styles, 'statisticsWrapper')}>
+                            <Typography.Title className={getBemClasses(styles, 'statisticsTitle')}>
+                                Частота повторений
+                            </Typography.Title>
+                            <RecordTriggersCounts triggersCount={record?.triggersCount ?? []} />
                         </div>
+
+                        <div>
+
+                        </div>
+
+                        <Button
+                            type="primary"
+                            color="#722ED1"
+                            size="large"
+                            className={getBemClasses(styles, 'reportButton')}
+                        >
+                            Составить отчет
+                        </Button>
                     </div>
                 </div>
                 <RecordChat

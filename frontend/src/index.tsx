@@ -18,6 +18,9 @@ root.render(
             <QueryClientProvider client={queryClient}>
                 <ConfigProvider
                     theme={{
+                        token: {
+                            fontFamily: 'Inter',
+                        },
                         algorithm: theme.darkAlgorithm,
                     }}
                 >

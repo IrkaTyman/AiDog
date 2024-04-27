@@ -51,12 +51,13 @@ export const UserHeader: FC<Props> = typedMemo(function UserHeader({
                         type="text"
                         danger
                         size="small"
+                        className={getBemClasses(styles, 'logout')}
                         onClick={onLogout}
                     >
                         Выйти
                     </Button>
                 </div>
-                <Avatar src={user?.avatarSrc} className={getBemClasses(styles, 'userAvatar')} />
+                <Avatar size={50} src={user?.avatarSrc} className={getBemClasses(styles, 'userAvatar')} />
             </div>
         </div>
     );

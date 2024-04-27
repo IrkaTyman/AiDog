@@ -1,3 +1,63 @@
 .RecordTriggersConsole {
+    background-color: var(--grey-12);
+    border-radius: var(--border-radius-l);
+    display: flex;
+    flex-direction: column;
+}
 
+.RecordTriggersConsole__header {
+    font-size: 20px;
+    font-weight: var(--font-weight-semibold);
+    color: var(--grey-6);
+    text-align: center;
+    padding: 20px;
+    margin: 0;
+    border-bottom: 1px solid var(--grey-10)
+}
+
+.RecordTriggersConsole__scrollBlock {
+    flex: 1;
+    overflow: auto;
+    padding: 26px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-m);
+    max-height: 300px;
+}
+
+.RecordTriggersConsole__trigger {
+    border: 1px solid var(--red-6);
+    border-radius: var(--border-radius-m);
+    background-color: var(--grey-10);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+}
+
+.RecordTriggersConsole__triggerTitle {
+    display: flex;
+    gap: 4px;
+    align-items: center;
+    margin: 0;
+}
+
+.RecordTriggersConsole__indicator {
+    width: 9px;
+    height: 9px;
+    border-radius: 100%;
+}
+
+.RecordTriggersConsole__name {
+    font-weight: var(--font-weight-semibold);
+    font-size: 20px;
+    color: var(--grey-1);
+    margin: 0;
+}
+
+.RecordTriggersConsole__time {
+    color: var(--grey-7);
+    font-size: 15px;
+    margin: 0;
+    font-weight: var(--font-weight-semibold);
 }

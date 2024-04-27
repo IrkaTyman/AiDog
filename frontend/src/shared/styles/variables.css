@@ -8,11 +8,14 @@
     --space-s: 8px;
     --space-m: 16px;
     --space-l: 20px;
+    --space-xl: 40px;
 
     --grey-1: #ffffff;
     --grey-6: #bfbfbf;
     --grey-7: #8c8c8c;
+    --grey-8: #595959;
     --grey-10: #262626;
+    --grey-11: #1f1f1f;
     --grey-12: #141414;
 
     --red-6: #f5222d;
@@ -26,4 +29,10 @@
     --border-radius-l: 20px;
     --border-radius-m: 10px;
     --border-radius-s: 5px;
+
+    --font-weight-light: 300;
+    --font-weight-regular: 400;
+    --font-weight-mrdium: 500;
+    --font-weight-semibold: 600;
+    --font-weight-bold: 700;
 }

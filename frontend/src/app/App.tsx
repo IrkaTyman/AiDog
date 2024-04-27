@@ -1,4 +1,5 @@
 import './styles/index.css';
+import '@shared/styles/index.css';
 
 import { AuthContextProvider } from '@app/providers/AuthProvider/AuthProvider';
 

@@ -1,3 +1,82 @@
 .RecordPage {
+    background-color: var(--grey-10);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
 
+.RecordPage .RecordPage__name {
+    width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: 24px;
+    color: var(--grey-1);
+}
+
+.RecordPage__outerGrid {
+    padding: var(--space-xl);
+    display: grid;
+    grid-template-columns: 1fr 450px;
+    gap: var(--space-l);
+    position: relative;
+    flex: 1;
+}
+
+.RecordPage__chat {
+    position: sticky;
+    max-height: calc(100vh - var(--space-xl) * 2 - 75px)
+}
+
+.RecordPage__analysis {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-l);
+}
+
+.RecordPage__reportButton {
+    align-self: center;
+    justify-self: center;
+    background-color: #722ED1;
+}
+
+.RecordPage__timelineWrapper,
+.RecordPage__consoleWrapper,
+.RecordPage__statisticsWrapper {
+    background-color: var(--grey-12);
+    border-radius: var(--border-radius-l);
+}
+
+
+.RecordPage__timelineWrapper {
+    padding: var(--space-m) var(--space-l);
+}
+
+.RecordPage__innerGrid {
+    display: grid;
+    grid-template-columns: 1fr 350px;
+    grid-template-rows: 1fr 1fr;
+    gap: var(--space-l);
+}
+
+.RecordPage .RecordPage__consoleTitle,
+.RecordPage .RecordPage__statisticsTitle {
+    font-size: 20px;
+    font-weight: var(--font-weight-semibold);
+    color: var(--grey-6);
+    width: 100%;
+    text-align: center;
+    padding: 20px;
+    margin: 0;
+    border-bottom: 1px solid var(--grey-10)
+}
+
+.RecordPage__column {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-l);
+}
+
+.RecordPage__column_isRight {
+    justify-content: space-between;
 }
