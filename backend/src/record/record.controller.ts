@@ -18,7 +18,7 @@ export class RecordController {
         return this.recordService.create(createRecordDto);
     }
 
-    @Get()
+    @Post("/get-all")
     @UseGuards(JwtAuthGuard)
     @UsePipes(new ValidationPipe())
     findAll(@Body() getRecordsDto: GetRecordsDto) {
