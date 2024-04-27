@@ -1,9 +1,15 @@
+import { Badge, Image, Typography } from 'antd';
 import { FC, useCallback, useMemo } from 'react';
 
 import { useGetRecords } from '@entities/record/lib/useGetRecords';
 import { RecordStatus } from '@entities/record/model/RecordStatus';
+import { TriggerType } from '@entities/record/model/TriggerType';
+import { RecordCard } from '@entities/record/ui/RecordsGrid/RecordCard';
 import { RecordsFilters } from '@entities/record/ui/RecordsGrid/RecordsFilters';
 
+import Check from '@shared/assets/icons/Check.svg';
+import LeftText from '@shared/assets/icons/LeftText.svg';
+import Warning from '@shared/assets/icons/Warning.svg';
 import { useQueryParamState } from '@shared/hooks/useQueryParamState';
 import { getBemClasses, typedMemo } from '@shared/lib';
 import { ClassNameProps, TestProps } from '@shared/types';
@@ -17,17 +23,16 @@ export const RecordsGrid: FC<Props> = typedMemo(function RecordsGrid({
     'data-testid': dataTestId = 'RecordsGrid',
 }) {
     const [status, setStatus] = useQueryParamState('status');
-    const [triggers, setTriggers] = useQueryParamState('triggers');
+    const [triggersIds, setTriggersIds] = useQueryParamState('triggers');
 
     const parsedStatus = useMemo(() => status as RecordStatus, [status]);
-    const parsedTriggers = useMemo(() => triggers?.split(',') ?? [], [triggers]);
+    const parsedTriggers = useMemo(() => triggersIds?.split(',') ?? [], [triggersIds]);
     const setParsedTriggers = useCallback((triggers: string[]) => {
-        setTriggers(triggers.join(','));
+        setTriggersIds(triggers.join(','));
     }, []);
 
     const { data: records } = useGetRecords({ status: parsedStatus, triggers: parsedTriggers });
 
-    console.log(records);
     return (
         <div
             className={getBemClasses(styles, null, null, className)}
@@ -39,6 +44,10 @@ export const RecordsGrid: FC<Props> = typedMemo(function RecordsGrid({
                 triggers={parsedTriggers}
                 setTriggers={setParsedTriggers}
             />
+
+            <div className={getBemClasses(styles, 'records')}>
+                {records?.map(record => <RecordCard record={record} />)}
+            </div>
         </div>
     );
 });

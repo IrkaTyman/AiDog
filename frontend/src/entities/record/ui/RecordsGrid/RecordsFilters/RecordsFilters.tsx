@@ -36,13 +36,13 @@ export const RecordsFilters: FC<Props> = typedMemo(function RecordsFilters({
 
     const selectedTriggers = useMemo(() =>
         types?.filter(({ id }) => triggers.includes(id)) ?? [],
-    [triggers]);
+    [triggers, types]);
     const triggersOptions = useMemo<MenuProps['items']>(
         () => types?.filter(({ id }) => !triggers.includes(id)).map(type => ({
             label: type.name,
             key: type.id,
         })) ?? [],
-        [],
+        [types, triggers],
     );
 
     const addTrigger = useCallback((id: string) => {
@@ -96,7 +96,7 @@ export const RecordsFilters: FC<Props> = typedMemo(function RecordsFilters({
 
             <div>
                 <Select
-                    defaultValue="lucy"
+                    value={status}
                     style={{ width: 200 }}
                     onChange={setStatus}
                     options={statusOptions}
