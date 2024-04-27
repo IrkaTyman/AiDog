@@ -5,6 +5,8 @@ import webpack from 'webpack';
 
 import { BuildOptions } from './types/config';
 import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
+import CopyPlugin from "copy-webpack-plugin";
+import path from "path";
 
 export function buildPlugins({
     paths,
@@ -21,7 +23,17 @@ export function buildPlugins({
         }),
         new webpack.DefinePlugin({
             __IS_DEV__: JSON.stringify(isDev),
-        })
+        }),
+        new CopyPlugin({
+            patterns: [
+                {
+                    from: "public/_redirects"
+                },
+                {
+                    from: "public/robots.txt"
+                }
+            ],
+        }),
     ];
 
     if (isDev) {
