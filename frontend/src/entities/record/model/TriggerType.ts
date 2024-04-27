@@ -1,4 +1,5 @@
 export enum TriggerType {
     Bad = 'bad',
-    Good = 'good'
+    Good = 'good',
+    Neutral = 'neutral'
 }

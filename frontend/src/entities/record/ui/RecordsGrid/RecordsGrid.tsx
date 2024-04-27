@@ -1,9 +1,15 @@
+import { Badge, Image, Typography } from 'antd';
 import { FC, useCallback, useMemo } from 'react';
 
 import { useGetRecords } from '@entities/record/lib/useGetRecords';
 import { RecordStatus } from '@entities/record/model/RecordStatus';
+import { TriggerType } from '@entities/record/model/TriggerType';
+import { RecordCard } from '@entities/record/ui/RecordsGrid/RecordCard';
 import { RecordsFilters } from '@entities/record/ui/RecordsGrid/RecordsFilters';
 
+import Check from '@shared/assets/icons/Check.svg';
+import LeftText from '@shared/assets/icons/LeftText.svg';
+import Warning from '@shared/assets/icons/Warning.svg';
 import { useQueryParamState } from '@shared/hooks/useQueryParamState';
 import { getBemClasses, typedMemo } from '@shared/lib';
 import { ClassNameProps, TestProps } from '@shared/types';
@@ -38,6 +44,10 @@ export const RecordsGrid: FC<Props> = typedMemo(function RecordsGrid({
                 triggers={parsedTriggers}
                 setTriggers={setParsedTriggers}
             />
+
+            <div className={getBemClasses(styles, 'records')}>
+                {records?.map(record => <RecordCard record={record} />)}
+            </div>
         </div>
     );
 });
