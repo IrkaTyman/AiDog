@@ -44,6 +44,7 @@ const columns = (actions: (trigger: TriggerTypeDTO) => ReactNode): TableProps<Tr
     },
     {
         title: '',
+        width: 150,
         key: 'action',
         render: (_, trigger) => actions(trigger),
     },
