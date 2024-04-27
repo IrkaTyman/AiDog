@@ -1,26 +1,38 @@
-import { Injectable } from '@nestjs/common';
-import { CreateReportDto } from './dto/create-report.dto';
-import { UpdateReportDto } from './dto/update-report.dto';
+import {Injectable, NotFoundException} from '@nestjs/common';
+import {CreateReportDto} from './dto/create-report.dto';
+import {InjectRepository} from "@nestjs/typeorm";
+import {Repository} from "typeorm";
+import {Report} from "./entities/report.entity"
+import {Record, RecordStatus} from "../record/entities/record.entity";
 
 @Injectable()
 export class ReportService {
-  create(createReportDto: CreateReportDto) {
-    return 'This action adds a new report';
-  }
+    constructor(
+        @InjectRepository(Report)
+        private readonly reportRepository: Repository<Report>,
+        @InjectRepository(Record)
+        private readonly recordRepository: Repository<Record>,
+    ) {
+    }
 
-  findAll() {
-    return `This action returns all report`;
-  }
+    async create(createReportDto: CreateReportDto, userId: string) {
+        const isExist = await this.recordRepository.existsBy({id: createReportDto.recordId});
 
-  findOne(id: number) {
-    return `This action returns a #${id} report`;
-  }
+        if (!isExist)
+            throw new NotFoundException("Record not found!");
 
-  update(id: number, updateReportDto: UpdateReportDto) {
-    return `This action updates a #${id} report`;
-  }
+        const newReport = {
+            report: createReportDto.report,
+            record: {id: createReportDto.recordId},
+            user: {id: userId}
+        }
 
-  remove(id: number) {
-    return `This action removes a #${id} report`;
-  }
+        const res = await this.reportRepository.save(newReport);
+
+        await this.recordRepository.update(createReportDto.recordId, {
+            status: RecordStatus.OLD
+        });
+
+        return {reportID: res.id}
+    }
 }

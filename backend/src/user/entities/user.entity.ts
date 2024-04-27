@@ -23,16 +23,16 @@ export class User {
     @Column()
     secondName: string;
 
-    @Column()
+    @Column({select: false})
     password: string;
 
     @Column({nullable: true})
     avatarSrc: string;
 
-    @CreateDateColumn()
+    @CreateDateColumn({select: false})
     created_at: Date;
 
-    @UpdateDateColumn()
+    @UpdateDateColumn({select: false})
     updated_at: Date;
 
     @OneToMany(() => Report, (report) => report.id, {nullable: true})
