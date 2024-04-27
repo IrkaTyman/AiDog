@@ -2,6 +2,8 @@ import { Button, Typography } from 'antd';
 import { FC, useMemo, useState } from 'react';
 import { useParams } from 'react-router-dom';
 
+import { CreateReportModal } from '@features/record/ui/CreateReportModal';
+
 import { RecordChat, RecordTriggersConsole, RecordTriggersCounts, useGetRecord } from '@entities/record';
 import { RecordChatTimeline } from '@entities/record/ui/RecordChatTimeline';
 import { UserHeader } from '@entities/user';
@@ -60,14 +62,24 @@ export const RecordPage: FC<Props> = typedMemo(function RecordPage({
 
                         </div>
 
-                        <Button
-                            type="primary"
-                            color="#722ED1"
-                            size="large"
-                            className={getBemClasses(styles, 'reportButton')}
-                        >
-                            Составить отчет
-                        </Button>
+                        {id
+                            ? <CreateReportModal
+                                recordId={id}
+                                triggerComponent={
+                                    open => (
+                                        <Button
+                                            type="primary"
+                                            color="#722ED1"
+                                            size="large"
+                                            onClick={open}
+                                            className={getBemClasses(styles, 'reportButton')}
+                                        >
+                                        Составить отчет
+                                        </Button>
+                                    )
+                                }
+                            />
+                            : null}
                     </div>
                 </div>
                 <RecordChat

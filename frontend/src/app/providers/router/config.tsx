@@ -23,6 +23,7 @@ export const routeConfig = (isAuth: boolean): RouteProps[] => {
             },
         ]);
     }
+    console.log(routes);
 
     return routes;
 };

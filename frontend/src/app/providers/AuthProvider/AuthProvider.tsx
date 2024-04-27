@@ -28,7 +28,7 @@ export const AuthContextProvider = typedMemo(
     function UserContextProvider({
         children,
     }: AuthContextProviderProps) {
-        const [isAuth, setIsAuth] = useState(false);
+        const [isAuth, setIsAuth] = useState(localStorage.getItem('token') !== null);
 
         const login = useCallback((data: LoginDTO) => {
             setIsAuth(true);
@@ -38,13 +38,6 @@ export const AuthContextProvider = typedMemo(
         const logout = useCallback(() => {
             setIsAuth(false);
             localStorage.removeItem('token');
-        }, []);
-
-        useEffect(() => {
-            const accessToken = localStorage.getItem('token');
-            if (accessToken) {
-                setIsAuth(true);
-            }
         }, []);
 
         return (

@@ -1,3 +1,7 @@
 @import url("normilize.css");
 @import url("variables.css");
 @import url("fonts.css");
+
+* {
+    font-family: 'SF-Pro-Display', sans-serif;
+}
