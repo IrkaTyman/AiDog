@@ -47,8 +47,8 @@ export const EditTriggerModal: FC<Props> = typedMemo(function EditTriggerModal({
     }, []);
 
     const onSubmit = useCallback((form: TriggerTypeDTO) => {
-        edit(form);
-    }, [edit]);
+        edit({ ...trigger, ...form });
+    }, [edit, trigger]);
 
     return (
         <>
@@ -88,7 +88,7 @@ export const EditTriggerModal: FC<Props> = typedMemo(function EditTriggerModal({
                     </Form.Item>
 
                     <Form.Item
-                        name="example"
+                        name="examples"
                         rules={[{ required: true, message: 'Поле обязательно для ввода!' }]}
                     >
                         <Input.TextArea placeholder="Введите примеры тригеров" size="large" />
@@ -115,7 +115,7 @@ export const EditTriggerModal: FC<Props> = typedMemo(function EditTriggerModal({
                             size="large"
                             disabled={isLoading}
                         >
-                            Создать
+                            Изменить
                         </Button>
                     </Form.Item>
                 </Form>
