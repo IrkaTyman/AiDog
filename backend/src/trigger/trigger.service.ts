@@ -13,7 +13,7 @@ export class TriggerService {
     }
 
     async create(createTriggerDto: CreateTriggerDto) {
-        const isTriggerExist = await this.triggerRepository.existsBy({name: createTriggerDto.name})
+        const isTriggerExist = await this.triggerRepository.existsBy({name: createTriggerDto.name, isActive: true})
 
         if (isTriggerExist)
             throw new BadRequestException("The trigger already exist!");
@@ -36,5 +36,16 @@ export class TriggerService {
                 where: {id}
             },
         )
+    }
+
+    async remove(id: string) {
+        const isExist = await this.triggerRepository.existsBy({id})
+
+        if (!isExist)
+            throw new NotFoundException("Trigger not found!")
+
+        return await this.triggerRepository.update(id, {
+            isActive: false
+        })
     }
 }
