@@ -1,0 +1,83 @@
+import { Button, Typography } from 'antd';
+import { FC, useMemo, useState } from 'react';
+import { useParams } from 'react-router-dom';
+
+import { RecordChat, RecordTriggersConsole, RecordTriggersCounts, useGetRecord } from '@entities/record';
+import { RecordChatTimeline } from '@entities/record/ui/RecordChatTimeline';
+import { UserHeader } from '@entities/user';
+
+import Warning from '@shared/assets/icons/Warning.svg';
+import { getBemClasses, typedMemo } from '@shared/lib';
+import { ClassNameProps, TestProps } from '@shared/types';
+
+import styles from './RecordPage.module.css';
+
+export type Props = ClassNameProps & TestProps & Readonly<{}>;
+
+export const RecordPage: FC<Props> = typedMemo(function RecordPage({
+    className,
+    'data-testid': dataTestId = 'RecordPage',
+}) {
+    const { id } = useParams<{id: string}>();
+    const { data: record } = useGetRecord(id ?? '');
+    const [commentIndex, setCommentIndex] = useState(0);
+    const commentId = useMemo(() => record?.comments[commentIndex].id, [record]);
+
+    return (
+        <div
+            className={getBemClasses(styles, null, null, className)}
+            data-testid={dataTestId}
+        >
+            <UserHeader
+                actions={
+                    <Typography.Title className={getBemClasses(styles, 'name')}>
+                        {record?.name}
+                    </Typography.Title>
+                }
+            />
+
+            <div className={getBemClasses(styles, 'outerGrid')}>
+                <div className={getBemClasses(styles, 'analysis')}>
+                    <div className={getBemClasses(styles, 'timelineWrapper')}>
+                        <RecordChatTimeline
+                            comments={record?.comments ?? []}
+                            index={commentIndex}
+                            setIndex={setCommentIndex}
+                        />
+
+                        <div className={getBemClasses(styles, 'innerGrid')}>
+                            <div className={getBemClasses(styles, 'column')}>
+                                <div className={getBemClasses(styles, 'consoleWrapper')}>
+                                    <Typography.Title className={getBemClasses(styles, 'consoleTitle')}>
+                                        Консоль триггеров
+                                    </Typography.Title>
+                                    <RecordTriggersConsole comments={record?.comments ?? []} />
+                                </div>
+                                <div>
+
+                                </div>
+                            </div>
+                            <div className={getBemClasses(styles, 'column')}>
+                                <div className={getBemClasses(styles, 'statisticsWrapper')}>
+                                    <Typography.Title className={getBemClasses(styles, 'statisticsTitle')}>
+                                        Частота повторений
+                                    </Typography.Title>
+                                    <RecordTriggersCounts triggersCount={record?.triggersCount ?? []} />
+                                </div>
+
+                                <Button type="primary" color="#9254de">
+                                    Отправить отчет
+                                </Button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <RecordChat
+                    currentCommentId={commentId}
+                    className={getBemClasses(styles, 'chat')}
+                    comments={record?.comments ?? []}
+                />
+            </div>
+        </div>
+    );
+});

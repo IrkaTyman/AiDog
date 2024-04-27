@@ -17,8 +17,8 @@ import { TriggerTypeDTO } from '../model/TriggerTypeDTO';
  * @param options
  */
 export function useGetRecord(
-    id: string, options?: AxiosUseQueryOptions<RecordViewDTO[], string[]>,
-): UseQueryResult<RecordViewDTO[], AxiosError> {
+    id: string, options?: AxiosUseQueryOptions<RecordDTO, string[]>,
+): UseQueryResult<RecordDTO, AxiosError> {
     return useQuery(
         ['record/get', id],
         () => getRecord(id),

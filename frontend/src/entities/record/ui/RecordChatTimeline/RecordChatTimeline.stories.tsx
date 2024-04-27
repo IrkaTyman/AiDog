@@ -17,6 +17,8 @@ type Story = StoryObj<Props>;
 
 export const Default: Story = {
     args: {
+        index: 0,
+        setIndex: () => {},
         comments: [
             {
                 id: 'c3f34f4b-a157-426a-80a0-39b7b64e6d4b',

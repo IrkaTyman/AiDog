@@ -10,9 +10,9 @@ import {
     restoreI18NextMock,
 } from '@shared/mock/i18n';
 
-import { RecordChatTimeline } from './RecordChatTimeline';
+import { RecordPage } from './RecordPage';
 
-describe('entities/record/RecordChatTimeline', () => {
+describe('pages/record/RecordPage', () => {
     const wrapper = createWrapper({});
 
     beforeAll(() => {
@@ -25,9 +25,9 @@ describe('entities/record/RecordChatTimeline', () => {
     });
 
     it('Компонент появился в DOM дереве', async () => {
-        render(<RecordChatTimeline comments={[]} index={0} setIndex={() => {}} />, { wrapper });
+        render(<RecordPage />, { wrapper });
 
-        const component = await screen.findByTestId('RecordChatTimeline');
+        const component = await screen.findByTestId('RecordPage');
         expect(component).toBeInTheDocument();
     });
 });
