@@ -7,4 +7,9 @@ export type RecordDTO = {
     'previewSrc': string;
     'status': RecordStatus;
     'comments': CommentDTO[];
+    'triggersCount':
+        {
+            'trigger': string;
+            'count': string;
+        }[];
 };

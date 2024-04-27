@@ -6,5 +6,5 @@ import { extractData } from '@shared/lib';
 import { LoginModel } from '../model/LoginModel';
 
 export function login(data: LoginModel): Promise<LoginDTO> {
-    return http.post<LoginDTO>('login', data).then(extractData);
+    return http.post<LoginDTO>('auth/login', data).then(extractData);
 };

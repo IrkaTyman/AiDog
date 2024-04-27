@@ -48,7 +48,7 @@ export const LoginForm: FC<Props> = typedMemo(function LoginForm({
                 disabled={isLoading}
             >
                 <Form.Item
-                    name="login"
+                    name="email"
                     rules={[{ required: true, message: 'Поле обязательно для ввода!' }]}
                 >
                     <Input placeholder="Введите логин" size="large" />
