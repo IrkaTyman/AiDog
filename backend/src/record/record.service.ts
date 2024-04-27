@@ -121,12 +121,14 @@ export class RecordService {
                  WHERE rt.record = '${record.id}'
                  GROUP BY t.type`
             );
+            const commentsCount = await this.commentService.getCountByRecord(record.id);
             result.push({
                 id: record.id,
                 name: record.name,
                 previewSrc: record.previewSrc,
                 status: record.status,
-                triggerTypes
+                triggerTypes,
+                commentsCount
             });
         }
 
