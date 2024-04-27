@@ -18,7 +18,7 @@ export function useQueryParamState(name: string): QueryParamState {
             searchParams.set(name, value);
             setSearchParams(searchParams);
         }
-    }, [searchParams, name]);
+    }, [searchParams, name, setSearchParams]);
 
     useEffect(() => {
         const param = searchParams.get(name);

@@ -24,7 +24,7 @@ export const RecordsGrid: FC<Props> = typedMemo(function RecordsGrid({
     const parsedTriggers = useMemo(() => triggersIds?.split(',') ?? [], [triggersIds]);
     const setParsedTriggers = useCallback((triggers: string[]) => {
         setTriggersIds(triggers.join(','));
-    }, []);
+    }, [setTriggersIds]);
 
     const { data: records } = useGetRecords({ status: parsedStatus, triggers: parsedTriggers });
 
