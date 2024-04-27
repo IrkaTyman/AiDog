@@ -1,7 +1,7 @@
-import { Avatar, Button, Dropdown, Typography } from 'antd';
-import { FC, ReactNode, useCallback, useMemo } from 'react';
-import { useQueryClient } from 'react-query';
-import { Link } from 'react-router-dom';
+import {Avatar, Button, Dropdown, Typography} from 'antd';
+import {FC, ReactNode, useCallback, useMemo} from 'react';
+import {useQueryClient} from 'react-query';
+import {Link} from 'react-router-dom';
 
 import {useAuthContext} from '@app/providers/AuthProvider/AuthProvider';
 
@@ -11,7 +11,6 @@ import {ClassNameProps, TestProps} from '@shared/types';
 
 import styles from './UserHeader.module.css';
 import {useGetUser} from '../../lib/useGetUser';
-import {Link} from "react-router-dom";
 
 export type Props = ClassNameProps & TestProps & Readonly<{
     actions?: ReactNode;
