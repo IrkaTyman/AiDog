@@ -1,30 +1,31 @@
 import { Button, Form, Input, Modal, Select, SelectProps } from 'antd';
-import { FC, ReactNode, useCallback, useState } from 'react';
+import { FC, useCallback, useState } from 'react';
 import { useQueryClient } from 'react-query';
 
-import { useCreateTrigger } from '@features/record/lib/useCreateTrigger';
+import { useCreateReport } from '@features/record/lib/useCreateReport';
+import { useEditTrigger } from '@features/record/lib/useEditTrigger';
 import { CreateReportModel } from '@features/record/model/CreateReportModel';
-import { CreateTriggerModel } from '@features/record/model/CreateTriggerModel';
 
 import { TriggerType } from '@entities/record/model/TriggerType';
+import { TriggerTypeDTO } from '@entities/record/model/TriggerTypeDTO';
 
 import { getBemClasses, typedMemo } from '@shared/lib';
 import { ClassNameProps, TestProps } from '@shared/types';
 
-import styles from './CreateTriggerModal.module.css';
+import styles from './EditTriggerModal.module.css';
 
 export type Props = ClassNameProps & TestProps & Readonly<{
-    triggerComponent: (open: () => void) => ReactNode;
+    trigger: TriggerTypeDTO;
 }>;
 
-export const CreateTriggerModal: FC<Props> = typedMemo(function CreateTriggerModal({
-    triggerComponent,
+export const EditTriggerModal: FC<Props> = typedMemo(function EditTriggerModal({
+    trigger,
     className,
-    'data-testid': dataTestId = 'CreateTriggerModal',
+    'data-testid': dataTestId = 'EditTriggerModal',
 }) {
     const queryClient = useQueryClient();
     const [isModalOpen, setIsModalOpen] = useState(false);
-    const { mutate: create, isLoading } = useCreateTrigger({
+    const { mutate: edit, isLoading } = useEditTrigger({
         onSuccess: () => {
             queryClient.resetQueries(['triggers/get']);
             setIsModalOpen(false);
@@ -45,15 +46,17 @@ export const CreateTriggerModal: FC<Props> = typedMemo(function CreateTriggerMod
         setIsModalOpen(false);
     }, []);
 
-    const onSubmit = useCallback((form: CreateTriggerModel) => {
-        create(form);
-    }, [create]);
+    const onSubmit = useCallback((form: TriggerTypeDTO) => {
+        edit(form);
+    }, [edit]);
 
     return (
         <>
-            {triggerComponent(open)}
+            <Button type={'text'} onClick={open}>
+                Изменить
+            </Button>
             <Modal
-                title="Создание триггера"
+                title="Изменение триггера"
                 open={isModalOpen}
                 onOk={close}
                 onCancel={close}
@@ -62,11 +65,12 @@ export const CreateTriggerModal: FC<Props> = typedMemo(function CreateTriggerMod
                 data-testid={dataTestId}
             >
                 <Form
-                    name="createTrigger"
+                    name="editTrigger"
                     className={getBemClasses(styles, 'form')}
                     onFinish={onSubmit}
                     autoComplete="off"
                     layout={'vertical'}
+                    initialValues={trigger}
                     disabled={isLoading}
                 >
                     <Form.Item
@@ -84,7 +88,7 @@ export const CreateTriggerModal: FC<Props> = typedMemo(function CreateTriggerMod
                     </Form.Item>
 
                     <Form.Item
-                        name="examples"
+                        name="example"
                         rules={[{ required: true, message: 'Поле обязательно для ввода!' }]}
                     >
                         <Input.TextArea placeholder="Введите примеры тригеров" size="large" />

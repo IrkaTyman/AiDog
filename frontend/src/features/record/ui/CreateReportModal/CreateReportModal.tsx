@@ -27,7 +27,7 @@ export const CreateReportModal: FC<Props> = typedMemo(function CreateReportModal
     const [isModalOpen, setIsModalOpen] = useState(false);
     const { mutate: create, isLoading } = useCreateReport({
         onSuccess: () => {
-            queryClient.resetQueries('records/get');
+            queryClient.resetQueries(['records/get']);
         },
     });
 
@@ -47,6 +47,7 @@ export const CreateReportModal: FC<Props> = typedMemo(function CreateReportModal
         <>
             {triggerComponent(open)}
             <Modal
+                footer={null}
                 title="Создание отчета"
                 open={isModalOpen}
                 onOk={close}

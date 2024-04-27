@@ -7,4 +7,6 @@ export type TriggerTypeDTO = {
     'examples': string;
     'color': string;
     'type': TriggerType;
+    isActive?: boolean;
+    isDefault?: boolean;
 };

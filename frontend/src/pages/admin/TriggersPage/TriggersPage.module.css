@@ -1,0 +1,15 @@
+.TriggersPage {
+background-color: var(--grey-10);
+}
+
+.TriggersPage__content {
+    padding: var(--space-xl);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-m);
+    align-items: start;
+}
+
+.TriggersPage .TriggersPage__title {
+    margin-top: 0;
+}

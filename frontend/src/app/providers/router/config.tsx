@@ -1,5 +1,6 @@
 import { RouteProps, Navigate } from 'react-router-dom';
 
+import { adminRouteConfig } from '@pages/admin/routes';
 import { authRouteConfig } from '@pages/auth/routes';
 import { recordRouteConfig } from '@pages/records/routes';
 
@@ -9,6 +10,7 @@ export const routeConfig = (isAuth: boolean): RouteProps[] => {
     if (isAuth) {
         routes = routes.concat([
             ...recordRouteConfig,
+            ...adminRouteConfig,
             {
                 path: '*',
                 element: <Navigate to={'/record'} />,

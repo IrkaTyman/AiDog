@@ -23,7 +23,7 @@ export const CreateRecordModal: FC<Props> = typedMemo(function CreateRecordModal
     const [isModalOpen, setIsModalOpen] = useState(false);
     const { mutate: create, isLoading } = useCreateRecord({
         onSuccess: () => {
-            queryClient.resetQueries('records/get');
+            queryClient.resetQueries(['records/get']);
         },
     });
 
@@ -47,6 +47,7 @@ export const CreateRecordModal: FC<Props> = typedMemo(function CreateRecordModal
                 title="Анализ записи"
                 open={isModalOpen}
                 onOk={close}
+                footer={null}
                 onCancel={close}
                 className={getBemClasses(styles, null, null, className)}
                 data-testid={dataTestId}

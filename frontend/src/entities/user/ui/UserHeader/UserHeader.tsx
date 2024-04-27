@@ -1,6 +1,7 @@
-import { Avatar, Button, Typography } from 'antd';
-import { FC, ReactNode, useCallback } from 'react';
+import { Avatar, Button, Dropdown, Typography } from 'antd';
+import { FC, ReactNode, useCallback, useMemo } from 'react';
 import { useQueryClient } from 'react-query';
+import { Link } from 'react-router-dom';
 
 import { useAuthContext } from '@app/providers/AuthProvider/AuthProvider';
 
@@ -29,13 +30,31 @@ export const UserHeader: FC<Props> = typedMemo(function UserHeader({
         queryClient.resetQueries(['user/get-profile']);
     }, [queryClient, logout]);
 
+    const menuItems = useMemo(() => ([
+        { key: 'settings', label: <Link to="/admin/triggers">Настройки</Link> },
+        {
+            key: 'logout',
+            label: <Button
+                type="text"
+                danger
+                size="small"
+                className={getBemClasses(styles, 'logout')}
+                onClick={onLogout}
+            >
+                Выйти
+            </Button>,
+        },
+    ]), [onLogout]);
+
     return (
         <div
             className={getBemClasses(styles, null, null, className)}
             data-testid={dataTestId}
         >
             <div className={getBemClasses(styles, 'logo')}>
-                <Logo className={getBemClasses(styles, 'logoIcon')} />
+                <Link to="/record">
+                    <Logo className={getBemClasses(styles, 'logoIcon')} />
+                </Link>
             </div>
 
             <div className={getBemClasses(styles, 'actions')}>
@@ -47,17 +66,10 @@ export const UserHeader: FC<Props> = typedMemo(function UserHeader({
                     <Typography.Text className={getBemClasses(styles, 'name')}>
                         {user?.firstName} {user?.secondName}
                     </Typography.Text>
-                    <Button
-                        type="text"
-                        danger
-                        size="small"
-                        className={getBemClasses(styles, 'logout')}
-                        onClick={onLogout}
-                    >
-                        Выйти
-                    </Button>
                 </div>
-                <Avatar size={50} src={user?.avatarSrc} className={getBemClasses(styles, 'userAvatar')} />
+                <Dropdown menu={{ items: menuItems }}>
+                    <Avatar size={50} src={user?.avatarSrc} className={getBemClasses(styles, 'userAvatar')} />
+                </Dropdown>
             </div>
         </div>
     );
