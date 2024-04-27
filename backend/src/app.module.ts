@@ -6,6 +6,9 @@ import {ConfigModule, ConfigService} from "@nestjs/config";
 import {TypeOrmModule} from "@nestjs/typeorm";
 import {AuthModule} from './auth/auth.module';
 import {RecordModule} from './record/record.module';
+import { CommentModule } from './comment/comment.module';
+import { TriggerModule } from './trigger/trigger.module';
+import { RecordTriggersModule } from './record_triggers/record_triggers.module';
 
 @Module({
     imports: [
@@ -27,6 +30,9 @@ import {RecordModule} from './record/record.module';
         }),
         AuthModule,
         RecordModule,
+        CommentModule,
+        TriggerModule,
+        RecordTriggersModule,
     ],
     controllers: [AppController],
     providers: [AppService],
