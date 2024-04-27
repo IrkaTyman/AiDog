@@ -4,7 +4,7 @@ import {
     Delete,
     Get,
     HttpCode,
-    Param,
+    Param, Patch,
     Post,
     UseGuards,
     UsePipes,
@@ -15,6 +15,7 @@ import {CreateTriggerDto} from './dto/create-trigger.dto';
 import {JwtAuthGuard} from "../auth/guards/jwt-auth.guard";
 import {GetTriggerDto} from "./dto/get-trigger.dto";
 import {RemoveTriggerDto} from "./dto/remove-trigger.dto";
+import {UpdateTriggerDto} from "./dto/update-trigger.dto";
 
 @Controller('trigger')
 export class TriggerController {
@@ -40,6 +41,13 @@ export class TriggerController {
     @UsePipes(new ValidationPipe())
     findOne(@Param() getTriggerDto: GetTriggerDto) {
         return this.triggerService.findOne(getTriggerDto.id);
+    }
+
+    @Patch(':id')
+    @UseGuards(JwtAuthGuard)
+    @UsePipes(new ValidationPipe())
+    update(@Param('id') id: string, @Body() updateTriggerDto: UpdateTriggerDto) {
+        return this.triggerService.update(id, updateTriggerDto);
     }
 
     @Delete(':id')
