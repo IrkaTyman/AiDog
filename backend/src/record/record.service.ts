@@ -146,6 +146,9 @@ export class RecordService {
                     triggers: {
                         trigger: true
                     }
+                },
+                reports: {
+                    user: true
                 }
             }
         });
