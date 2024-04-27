@@ -1,4 +1,5 @@
-import {IsNumber, IsString, NotEquals, ValidateIf} from "class-validator";
+import {IsEnum, IsNumber, IsString, NotEquals, ValidateIf} from "class-validator";
+import {TriggerTypes} from "../entities/trigger.entity";
 
 export class UpdateTriggerDto {
     @IsString()
@@ -16,4 +17,8 @@ export class UpdateTriggerDto {
     @IsString()
     @ValidateIf((_, value) => value !== undefined)
     color?: string;
+
+    @IsString()
+    @IsEnum(TriggerTypes)
+    type: TriggerTypes;
 }

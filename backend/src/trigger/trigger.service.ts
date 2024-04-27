@@ -50,6 +50,7 @@ export class TriggerService {
             description: "description" in updateTriggerDto ? updateTriggerDto.description : undefined,
             examples: "examples" in updateTriggerDto ? updateTriggerDto.examples : undefined,
             color: "color" in updateTriggerDto ? updateTriggerDto.color : undefined,
+            type: "type" in updateTriggerDto ? updateTriggerDto.type : undefined,
         });
 
         return this.triggerRepository.findOne({
