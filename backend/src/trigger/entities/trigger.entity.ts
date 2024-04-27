@@ -25,6 +25,12 @@ export class Trigger {
     @Column()
     color: string;
 
+    @Column({default: false})
+    isDefault: boolean;
+
+    @Column({default: true})
+    isActive: boolean;
+
     @Column({
         type: "enum",
         enum: ["good", "bad", "neutral"],

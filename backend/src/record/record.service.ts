@@ -23,53 +23,32 @@ export class RecordService {
 
     async create(createRecordDto: CreateRecordDto) {
         const comments = createRecordDto.comments;
-        const triggers = await this.triggerRepository.find();
-
-        console.log(comments, triggers) // типа отправил на NLP API
+        const triggers = await this.triggerRepository.find({where: {isActive: true}});
 
         const newRecord = await this.recordRepository.save({
             name: createRecordDto.name,
             previewSrc: createRecordDto.previewSrc
         });
 
-        const r = {
-            comments: [
-                {
-                    nickname: "CatDev",
-                    message: "Привет, всем!",
-                    time: "9:51:49",
-                    triggers: []
+        let commentsWithTriggers = await fetch(
+            "http://89.208.216.16/process_comments", {
+                method: "post",
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
                 },
-                {
-                    nickname: "AhidovR",
-                    message: "Привет, <Мат>сука</Мат>!",
-                    time: "9:51:55",
-                    triggers: [
-                        {
-                            id: "e335ea7e-c816-4a88-b7b9-2ce7d5ead44e",
-                            data: {
-                                "message": "сука"
-                            }
-                        }
-                    ]
-                },
-                {
-                    nickname: "Tuman",
-                    message: "<Реклама>https://catdeveloper.ru/blog</Реклама>",
-                    time: "9:52:32",
-                    triggers: [
-                        {
-                            id: "fa097bd5-9696-4412-8d24-0601ec4cbfaf",
-                            data: {
-                                "link": "https://catdeveloper.ru/blog"
-                            }
-                        }
-                    ]
-                }
-            ]
-        }
+                body: JSON.stringify({
+                    comments,
+                    triggers
+                })
+            })
+            .then(response => response.json())
+            .then(result => result)
+            .catch(error => {
+                throw new BadRequestException()
+            })
 
-        for (let comment of r.comments) {
+        for (let comment of commentsWithTriggers.comments) {
             const {commentID} = await this.commentService.create({
                 recordId: newRecord.id,
                 studentNickname: comment.nickname,
@@ -78,14 +57,14 @@ export class RecordService {
             })
 
             for (let trigger of comment.triggers) {
-                const isTriggerExist = await this.triggerRepository.existsBy({id: trigger.id});
+                const isTriggerExist = await this.triggerRepository.existsBy({id: trigger});
 
                 if (!isTriggerExist)
                     throw new BadRequestException("The trigger doesn't exist!");
 
                 const newRecordTrigger = await this.recordTriggerRepository.save({
                     comment: {id: commentID},
-                    trigger: {id: trigger.id},
+                    trigger: {id: trigger},
                     record: {id: newRecord.id}
                 })
             }
