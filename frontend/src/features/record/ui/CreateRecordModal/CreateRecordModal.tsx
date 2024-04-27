@@ -3,7 +3,7 @@ import { FC, ReactNode, useCallback, useState } from 'react';
 import { useQueryClient } from 'react-query';
 
 import { useCreateRecord } from '@features/record/lib/useCreateRecord';
-import { CreateRecordModel } from '@features/record/model/CreateRecordModel';
+import { CreateRecordCommentModel } from '@features/record/model/CreateRecordCommentModel';
 
 import { getBemClasses, typedMemo } from '@shared/lib';
 import { ClassNameProps, TestProps } from '@shared/types';
@@ -35,9 +35,9 @@ export const CreateRecordModal: FC<Props> = typedMemo(function CreateRecordModal
         setIsModalOpen(false);
     }, []);
 
-    const onSubmit = useCallback((text: string) => {
-        const form = JSON.parse(text) as CreateRecordModel;
-        create(form);
+    const onSubmit = useCallback((form: {name: string; previewSrc: string; json: string}) => {
+        const comments = JSON.parse(form.json) as CreateRecordCommentModel[];
+        create({ name: form.name, previewSrc: form.previewSrc, comments });
     }, [create]);
 
     return (
@@ -61,10 +61,22 @@ export const CreateRecordModal: FC<Props> = typedMemo(function CreateRecordModal
                     disabled={isLoading}
                 >
                     <Form.Item
+                        name="name"
+                        rules={[{ required: true, message: 'Поле обязательно для ввода!' }]}
+                    >
+                        <Input placeholder="Введите название" size="large" />
+                    </Form.Item>
+                    <Form.Item
+                        name="previewSrc"
+                        rules={[{ required: true, message: 'Поле обязательно для ввода!' }]}
+                    >
+                        <Input placeholder="Вставьте ссылку на превью" size="large" />
+                    </Form.Item>
+                    <Form.Item
                         name="json"
                         rules={[{ required: true, message: 'Поле обязательно для ввода!' }]}
                     >
-                        <Input.TextArea placeholder="Введите json записи" size="large" />
+                        <Input.TextArea placeholder="Введите json с комментариями" size="large" />
                     </Form.Item>
 
                     <Form.Item className={getBemClasses(styles, 'ButtonContainer')}>
