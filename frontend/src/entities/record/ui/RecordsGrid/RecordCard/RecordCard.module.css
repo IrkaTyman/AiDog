@@ -1,5 +1,5 @@
 .RecordCard {
-    width: 220px;
+    width: 240px;
     height: 250px;
     background: #141414;
     border-radius: 20px;
@@ -22,31 +22,36 @@
 }
 
 .RecordCard__info {
-    padding: 8px;
+    padding: 8px 12px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     height: calc(250px - 130px);
     box-sizing: border-box;
+    gap: 14px;
 }
 
-.RecordCard__name {
+.RecordCard .RecordCard__name {
     font-size: 16px !important;
+    line-height: 21px;
     margin: 0;
     padding: 0;
+    flex:1;
+    overflow: hidden;
 }
 
 .RecordCard__triggers {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 10px;
+    gap: 8px;
 }
 
-.RecordCard__trigger {
+.RecordCard  .RecordCard__trigger {
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 5px;
+    margin: 0;
 }
 

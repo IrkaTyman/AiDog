@@ -1,16 +1,16 @@
-import {Avatar, Button, Dropdown, Typography} from 'antd';
-import {FC, ReactNode, useCallback, useMemo} from 'react';
-import {useQueryClient} from 'react-query';
-import {Link} from 'react-router-dom';
+import { Avatar, Button, Dropdown, Typography } from 'antd';
+import { FC, ReactNode, useCallback, useMemo } from 'react';
+import { useQueryClient } from 'react-query';
+import { Link } from 'react-router-dom';
 
-import {useAuthContext} from '@app/providers/AuthProvider/AuthProvider';
+import { useAuthContext } from '@app/providers/AuthProvider/AuthProvider';
 
 import Logo from '@shared/assets/icons/Logo.svg';
-import {getBemClasses, typedMemo} from '@shared/lib';
-import {ClassNameProps, TestProps} from '@shared/types';
+import { getBemClasses, typedMemo } from '@shared/lib';
+import { ClassNameProps, TestProps } from '@shared/types';
 
 import styles from './UserHeader.module.css';
-import {useGetUser} from '../../lib/useGetUser';
+import { useGetUser } from '../../lib/useGetUser';
 
 export type Props = ClassNameProps & TestProps & Readonly<{
     actions?: ReactNode;
@@ -22,8 +22,8 @@ export const UserHeader: FC<Props> = typedMemo(function UserHeader({
     'data-testid': dataTestId = 'UserHeader',
 }) {
     const queryClient = useQueryClient();
-    const {data: user} = useGetUser();
-    const {logout} = useAuthContext();
+    const { data: user } = useGetUser();
+    const { logout } = useAuthContext();
 
     const onLogout = useCallback(() => {
         logout();
@@ -69,7 +69,7 @@ export const UserHeader: FC<Props> = typedMemo(function UserHeader({
                 </div>
 
                 <Dropdown menu={{ items: menuItems }}>
-                    <Avatar size={50} src={user?.avatarSrc} className={getBemClasses(styles, 'userAvatar')} />
+                    <Avatar size={40} src={user?.avatarSrc} className={getBemClasses(styles, 'userAvatar')} />
                 </Dropdown>
             </div>
         </div>
