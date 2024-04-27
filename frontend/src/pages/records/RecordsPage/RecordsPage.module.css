@@ -1,3 +1,48 @@
 .RecordsPage {
+    background-color: var(--grey-10);
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
 
+.RecordsPage__greeting {
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 200px;
+    gap: 10px;
+}
+
+.RecordsPage__greetingBackground {
+    width: 100%;
+    position: absolute;
+    top: 66px;
+    z-index: 0;
+}
+
+.RecordsPage__greetingTitle {
+    z-index: 1;
+    margin: 0;
+    padding: 0;
+}
+
+.RecordsPage__analysisButton {
+    background: linear-gradient(228deg, #393fde 0%, #892ce7 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+}
+
+.RecordsPage__recordsTitle {
+    font-size: 24px !important;
+    margin: 0;
+    padding: 0;
+}
+
+.RecordsPage__recordsContainer {
+    padding: 0 50px;
 }

@@ -11,4 +11,5 @@ export type RecordViewDTO = {
         type: TriggerType;
         count: string;
     }[];
+    commentsCount: number;
 };
