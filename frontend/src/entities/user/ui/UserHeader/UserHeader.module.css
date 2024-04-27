@@ -16,12 +16,16 @@
     flex-basis: 60%;
     width: 100%;
     overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .UserHeader__user {
     display: flex;
     align-items: center;
     gap: var(--space-m);
+    justify-content: end;
 }
 
 .UserHeader__userAvatar {

@@ -12,6 +12,9 @@
     white-space: nowrap;
     font-size: 24px;
     color: var(--grey-1);
+    margin: 0;
+    padding: 0;
+    text-align: center;
 }
 
 .RecordPage__outerGrid {

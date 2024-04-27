@@ -58,13 +58,14 @@ export const RecordsFilters: FC<Props> = typedMemo(function RecordsFilters({
             className={getBemClasses(styles, null, null, className)}
             data-testid={dataTestId}
         >
-            <div>
+            <div className={getBemClasses(styles, 'triggerFilter')}>
                 {selectedTriggers.map(type => {
                     const isLongTag = type.name.length > 20;
                     const tagElem = (
                         <Tag
                             key={type.id}
                             closable
+                            className={getBemClasses(styles, 'tag')}
                             style={{ userSelect: 'none' }}
                             onClose={() => deleteTrigger(type.id)}
                         >
@@ -88,7 +89,7 @@ export const RecordsFilters: FC<Props> = typedMemo(function RecordsFilters({
                     }}
                     trigger={['click']}
                 >
-                    <Tag className={getBemClasses(styles, 'triggerFilter')}>
+                    <Tag className={getBemClasses(styles, 'triggerFilterButton')}>
                         <Plus />
                         Фильтр по триггеру
                     </Tag>

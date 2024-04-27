@@ -1,15 +1,16 @@
-import { Avatar, Button, Typography } from 'antd';
-import { FC, ReactNode, useCallback } from 'react';
-import { useQueryClient } from 'react-query';
+import {Avatar, Button, Typography} from 'antd';
+import React, {FC, ReactNode, useCallback} from 'react';
+import {useQueryClient} from 'react-query';
 
-import { useAuthContext } from '@app/providers/AuthProvider/AuthProvider';
+import {useAuthContext} from '@app/providers/AuthProvider/AuthProvider';
 
 import Logo from '@shared/assets/icons/Logo.svg';
-import { getBemClasses, typedMemo } from '@shared/lib';
-import { ClassNameProps, TestProps } from '@shared/types';
+import {getBemClasses, typedMemo} from '@shared/lib';
+import {ClassNameProps, TestProps} from '@shared/types';
 
 import styles from './UserHeader.module.css';
-import { useGetUser } from '../../lib/useGetUser';
+import {useGetUser} from '../../lib/useGetUser';
+import {Link} from "react-router-dom";
 
 export type Props = ClassNameProps & TestProps & Readonly<{
     actions?: ReactNode;
@@ -21,8 +22,8 @@ export const UserHeader: FC<Props> = typedMemo(function UserHeader({
     'data-testid': dataTestId = 'UserHeader',
 }) {
     const queryClient = useQueryClient();
-    const { data: user } = useGetUser();
-    const { logout } = useAuthContext();
+    const {data: user} = useGetUser();
+    const {logout} = useAuthContext();
 
     const onLogout = useCallback(() => {
         logout();
@@ -34,9 +35,9 @@ export const UserHeader: FC<Props> = typedMemo(function UserHeader({
             className={getBemClasses(styles, null, null, className)}
             data-testid={dataTestId}
         >
-            <div className={getBemClasses(styles, 'logo')}>
-                <Logo className={getBemClasses(styles, 'logoIcon')} />
-            </div>
+            <Link to={"/record"} className={getBemClasses(styles, 'logo')}>
+                <Logo className={getBemClasses(styles, 'logoIcon')}/>
+            </Link>
 
             <div className={getBemClasses(styles, 'actions')}>
                 {actions}
@@ -57,7 +58,7 @@ export const UserHeader: FC<Props> = typedMemo(function UserHeader({
                         Выйти
                     </Button>
                 </div>
-                <Avatar size={50} src={user?.avatarSrc} className={getBemClasses(styles, 'userAvatar')} />
+                <Avatar size={50} src={user?.avatarSrc} className={getBemClasses(styles, 'userAvatar')}/>
             </div>
         </div>
     );

@@ -7,6 +7,11 @@
 .RecordsFilters__triggerFilter {
     display: flex;
     align-items: center;
+}
+
+.RecordsFilters__triggerFilterButton {
+    display: flex;
+    align-items: center;
     justify-content: center;
     gap: 5px;
 }

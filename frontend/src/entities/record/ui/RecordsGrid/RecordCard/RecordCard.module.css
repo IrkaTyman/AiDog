@@ -5,11 +5,48 @@
     border-radius: 20px;
 }
 
-.RecordCard__image {
-    border-radius: 20px 20px 0 0;
+.RecordCard__link {
+    text-decoration: none;
 }
 
+.RecordCard__imageWrapper {
+    width: 100%;
+}
+
+.RecordCard__image {
+    border-radius: 20px 20px 0 0;
+    max-height: 130px;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+.RecordCard__info {
+    padding: 8px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: calc(250px - 130px);
+    box-sizing: border-box;
+}
 
 .RecordCard__name {
     font-size: 16px !important;
+    margin: 0;
+    padding: 0;
 }
+
+.RecordCard__triggers {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.RecordCard__trigger {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+}
+

@@ -1,15 +1,16 @@
-import { createRoot } from 'react-dom/client';
-import { BrowserRouter } from 'react-router-dom';
+import {createRoot} from 'react-dom/client';
+import {BrowserRouter} from 'react-router-dom';
 
 import App from './app/App';
 import './shared/config/i18n';
-import { ErrorBoundary } from './app/providers/ErrorBoundary';
+import './shared/styles/index.css'
+import {ErrorBoundary} from '@app/providers/ErrorBoundary';
 
-import { QueryClientProvider } from 'react-query';
+import {QueryClientProvider} from 'react-query';
 
-import { queryClient } from './shared/config/query';
+import {queryClient} from '@shared/config/query';
 
-import { ConfigProvider, theme } from 'antd';
+import {ConfigProvider, theme} from 'antd';
 
 const root = createRoot(document.getElementById('root')!);
 root.render(
@@ -24,7 +25,7 @@ root.render(
                         algorithm: theme.darkAlgorithm,
                     }}
                 >
-                    <App />
+                    <App/>
                 </ConfigProvider>
             </QueryClientProvider>
         </BrowserRouter>
