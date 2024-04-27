@@ -9,5 +9,13 @@ export function getRecords(
     status: RecordStatus,
     triggersIds: TriggerTypeDTO['id'][],
 ): Promise<RecordViewDTO[]> {
-    return http.post<RecordViewDTO[]>('record/get-all', { status, triggers: triggersIds }).then(extractData);
+    const filters: {status?: RecordStatus; triggers?: string[]} = {};
+
+    if (status) {
+        filters.status = status;
+    }
+    if (triggersIds.length > 0) {
+        filters.triggers = triggersIds;
+    }
+    return http.post<RecordViewDTO[]>('record/get-all', filters).then(extractData);
 }

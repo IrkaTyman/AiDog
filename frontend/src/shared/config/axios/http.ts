@@ -17,7 +17,7 @@ http.interceptors.request.use(async config => {
 
     const token = localStorage.getItem('token');
     // eslint-disable-next-line no-param-reassign
-    config.headers['Access-Token'] = `Bearer ${token}`;
+    config.headers.Authorization = `Bearer ${token}`;
 
     return config;
 });

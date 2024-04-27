@@ -13,8 +13,10 @@ export function useQueryParamState(name: string): QueryParamState {
         setValue(value);
         if (!value) {
             searchParams.delete(name);
+            setSearchParams(searchParams);
         } else {
             searchParams.set(name, value);
+            setSearchParams(searchParams);
         }
     }, [searchParams, name]);
 

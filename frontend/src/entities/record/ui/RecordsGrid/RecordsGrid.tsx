@@ -17,17 +17,16 @@ export const RecordsGrid: FC<Props> = typedMemo(function RecordsGrid({
     'data-testid': dataTestId = 'RecordsGrid',
 }) {
     const [status, setStatus] = useQueryParamState('status');
-    const [triggers, setTriggers] = useQueryParamState('triggers');
+    const [triggersIds, setTriggersIds] = useQueryParamState('triggers');
 
     const parsedStatus = useMemo(() => status as RecordStatus, [status]);
-    const parsedTriggers = useMemo(() => triggers?.split(',') ?? [], [triggers]);
+    const parsedTriggers = useMemo(() => triggersIds?.split(',') ?? [], [triggersIds]);
     const setParsedTriggers = useCallback((triggers: string[]) => {
-        setTriggers(triggers.join(','));
+        setTriggersIds(triggers.join(','));
     }, []);
 
     const { data: records } = useGetRecords({ status: parsedStatus, triggers: parsedTriggers });
 
-    console.log(records);
     return (
         <div
             className={getBemClasses(styles, null, null, className)}
