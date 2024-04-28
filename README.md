@@ -42,7 +42,6 @@ npm i --force
 npm run build:prod
 ```
 
-
 ### Демонстрация решения
 [](https://raw.githubusercontent.com/CatDevelop/AiDog/main/system/Demo1.png)
 ![AI Chat Inspector](https://raw.githubusercontent.com/CatDevelop/AiDog/main/system/Demo1.png "Auth")
