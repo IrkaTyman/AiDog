@@ -53,10 +53,16 @@ export const RecordChatTimeline: FC<Props> = typedMemo(function RecordChatTimeli
             {comments.map((comments, i) => (
                 comments.triggers.length === 0
                     ? null
-                    : <div
-                        style={{ left: `${pathWidth * i - 3.5}px` }}
-                        className={getBemClasses(styles, 'trigger', { type: comments.triggers[0].trigger.type })}
-                    />
+                    : comments.triggers.map((trigger, j) => {
+                        const totalPadding = (comments.triggers.length - 1) / 2 * 3;
+                        const padding = j * 3 - totalPadding;
+                        return (
+                            <div
+                                style={{ left: `${pathWidth * i - 3.5 + padding}px` }}
+                                className={getBemClasses(styles, 'trigger', { type: trigger.trigger.type })}
+                            />
+                        );
+                    })
             ))}
         </div>
     );
