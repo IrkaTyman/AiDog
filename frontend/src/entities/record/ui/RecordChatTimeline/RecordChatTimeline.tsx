@@ -1,13 +1,12 @@
-import {Slider, SliderSingleProps, Tooltip} from 'antd';
+import { Slider } from 'antd';
 import { FC, useEffect, useMemo, useRef, useState } from 'react';
-
-import { RecordDTO } from '@entities/record/model/RecordDTO';
 
 import Timeline from '@shared/assets/images/timelinePath.png';
 import { getBemClasses, typedMemo } from '@shared/lib';
 import { ClassNameProps, TestProps } from '@shared/types';
 
 import styles from './RecordChatTimeline.module.css';
+import { RecordDTO } from '../../model/RecordDTO';
 import './style.css';
 
 export type Props = ClassNameProps & TestProps & Readonly<{
@@ -16,6 +15,9 @@ export type Props = ClassNameProps & TestProps & Readonly<{
     setIndex: (index: number) => void;
 }>;
 
+/**
+ * Временная шкала комментариев записи
+ */
 export const RecordChatTimeline: FC<Props> = typedMemo(function RecordChatTimeline({
     comments,
     index,
@@ -45,7 +47,7 @@ export const RecordChatTimeline: FC<Props> = typedMemo(function RecordChatTimeli
                 value={index}
                 onChange={setIndex}
                 min={1}
-                tooltip={{open: true}}
+                tooltip={{ open: true }}
                 max={comments.length}
             />
             {comments.map((comments, i) => (

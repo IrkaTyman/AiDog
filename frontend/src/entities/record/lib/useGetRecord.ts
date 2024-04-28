@@ -1,20 +1,14 @@
 import { AxiosError } from 'axios';
 import { useQuery, UseQueryResult } from 'react-query';
 
-import { getRecord } from '@entities/record/api/getRecord';
-import { RecordDTO } from '@entities/record/model/RecordDTO';
-import { RecordViewDTO } from '@entities/record/model/RecordViewDTO';
-
 import { AxiosUseQueryOptions } from '@shared/types';
 
-import { getRecords } from '../api/getRecords';
-import { RecordStatus } from '../model/RecordStatus';
-import { TriggerTypeDTO } from '../model/TriggerTypeDTO';
+import { getRecord } from '../api/getRecord';
+import { RecordDTO } from '../model/RecordDTO';
 
 /**
- * хук для получения информации о компании
- * @param companyId id компании
- * @param options
+ * Хук получения записи
+ * @param id ID записи
  */
 export function useGetRecord(
     id: string, options?: AxiosUseQueryOptions<RecordDTO, string[]>,

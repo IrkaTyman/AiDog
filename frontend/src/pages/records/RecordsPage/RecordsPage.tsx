@@ -1,6 +1,6 @@
 import { Button, Typography } from 'antd';
 import { FC, useCallback } from 'react';
-import { useNavigate, useSearchParams } from 'react-router-dom';
+import { useSearchParams } from 'react-router-dom';
 
 import { CreateRecordModal } from '@features/record/ui/CreateRecordModal';
 
@@ -10,8 +10,8 @@ import { TriggerType } from '@entities/record/model/TriggerType';
 import { useGetUser, UserHeader } from '@entities/user';
 
 import Stars from '@shared/assets/icons/Stars.svg';
-import GreetingBackground from '@shared/assets/images/greetingBackground.svg';
 import Warning from '@shared/assets/icons/Warning.svg';
+import GreetingBackground from '@shared/assets/images/greetingBackground.svg';
 import { getBemClasses, typedMemo } from '@shared/lib';
 import { ClassNameProps, TestProps } from '@shared/types';
 
@@ -23,7 +23,6 @@ export const RecordsPage: FC<Props> = typedMemo(function RecordsPage({
     className,
     'data-testid': dataTestId = 'RecordsPage',
 }) {
-    const navigate = useNavigate();
     const { data: user } = useGetUser();
     const { data: triggers } = useGetTriggerTypes();
     const [searchParams, setSearchParams] = useSearchParams();
@@ -64,7 +63,7 @@ export const RecordsPage: FC<Props> = typedMemo(function RecordsPage({
             />
 
             <div className={getBemClasses(styles, 'greeting')}>
-                <GreetingBackground className={getBemClasses(styles, 'greetingBackground')}/>
+                <GreetingBackground className={getBemClasses(styles, 'greetingBackground')} />
                 <Typography.Title className={getBemClasses(styles, 'greetingTitle')}>
                     👋 С возвращением, {user?.firstName}
                 </Typography.Title>

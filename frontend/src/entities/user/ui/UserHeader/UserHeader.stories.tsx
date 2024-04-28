@@ -1,10 +1,9 @@
 import { Meta, StoryObj } from '@storybook/react';
 
-import { getGetUserAxiosMock } from '@entities/user/mock/getGetUserAxiosMock';
-
 import { createDecorators } from '@shared/mock/storybook';
 
 import { UserHeader, Props } from './UserHeader';
+import { getGetUserAxiosMock } from '../../mock/getGetUserAxiosMock';
 
 const meta: Meta<Props> = {
     title: 'entities/user/UserHeader',

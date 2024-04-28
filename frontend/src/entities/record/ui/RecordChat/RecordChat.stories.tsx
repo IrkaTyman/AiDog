@@ -1,8 +1,6 @@
 import { Meta, StoryObj } from '@storybook/react';
 import { useState } from 'react';
 
-import { TriggerType } from '@entities/record/model/TriggerType';
-
 import { createDecorators } from '@shared/mock/storybook';
 
 import { RecordChat, Props } from './RecordChat';

@@ -1,3 +1,9 @@
 .TriggersTable {
 
 }
+
+.TriggersTable__indicator {
+    width: 9px;
+    height: 9px;
+    border-radius: 100%;
+}

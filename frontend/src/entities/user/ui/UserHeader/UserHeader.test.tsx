@@ -1,7 +1,5 @@
 import { screen, render } from '@testing-library/react';
 
-import { getGetUserAxiosMock } from '@entities/user/mock/getGetUserAxiosMock';
-
 import {
     createWrapper,
     mockAxios,
@@ -13,6 +11,7 @@ import {
 } from '@shared/mock/i18n';
 
 import { UserHeader } from './UserHeader';
+import { getGetUserAxiosMock } from '../../mock/getGetUserAxiosMock';
 
 describe('entities/user/UserHeader', () => {
     const wrapper = createWrapper({});

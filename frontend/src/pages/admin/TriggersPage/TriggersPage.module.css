@@ -6,10 +6,11 @@ background-color: var(--grey-10);
     padding: var(--space-xl);
     display: flex;
     flex-direction: column;
-    gap: var(--space-m);
+    gap:  22px;
     align-items: start;
 }
 
 .TriggersPage .TriggersPage__title {
     margin-top: 0;
+    margin-bottom: 10px;
 }

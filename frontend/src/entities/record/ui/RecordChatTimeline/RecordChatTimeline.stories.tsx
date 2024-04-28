@@ -1,10 +1,9 @@
 import { Meta, StoryObj } from '@storybook/react';
 
-import { TriggerType } from '@entities/record/model/TriggerType';
-
 import { createDecorators } from '@shared/mock/storybook';
 
 import { RecordChatTimeline, Props } from './RecordChatTimeline';
+import { TriggerType } from '../../model/TriggerType';
 
 const meta: Meta<Props> = {
     title: 'entities/record/RecordChatTimeline',

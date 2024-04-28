@@ -1,18 +1,20 @@
 import { Typography } from 'antd';
 import { FC, useEffect, useRef } from 'react';
 
-import { RecordDTO } from '@entities/record/model/RecordDTO';
-
 import { getBemClasses, typedMemo } from '@shared/lib';
 import { ClassNameProps, TestProps } from '@shared/types';
 
 import styles from './RecordChat.module.css';
+import { RecordDTO } from '../../model/RecordDTO';
 
 export type Props = ClassNameProps & TestProps & Readonly<{
     currentCommentId?: string;
     comments: RecordDTO['comments'];
 }>;
 
+/**
+ * Чат записи
+ */
 export const RecordChat: FC<Props> = typedMemo(function RecordChat({
     currentCommentId,
     comments,
@@ -45,7 +47,7 @@ export const RecordChat: FC<Props> = typedMemo(function RecordChat({
                 {comments.map(comment => (
                     <div
                         key={comment.id}
-                        className={getBemClasses(styles, comment.id === currentCommentId ? 'comment_select' : 'comment', )}
+                        className={getBemClasses(styles, comment.id === currentCommentId ? 'comment_select' : 'comment')}
                         id={`comment-${comment.id}`}
                     >
                         <div className={getBemClasses(styles, 'info')}>

@@ -1,10 +1,15 @@
-import {http} from '@shared/config/axios';
-import {extractData} from '@shared/lib';
+import { http } from '@shared/config/axios';
+import { extractData } from '@shared/lib';
 
-import {RecordStatus} from '../model/RecordStatus';
-import {RecordViewDTO} from '../model/RecordViewDTO';
-import {TriggerTypeDTO} from '../model/TriggerTypeDTO';
+import { RecordStatus } from '../model/RecordStatus';
+import { RecordViewDTO } from '../model/RecordViewDTO';
+import { TriggerTypeDTO } from '../model/TriggerTypeDTO';
 
+/**
+ * Метод получения записей
+ * @param status Статус записи
+ * @param triggersIds Триггеры записи
+ */
 export function getRecords(
     status: RecordStatus,
     triggersIds: TriggerTypeDTO['id'][],

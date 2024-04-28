@@ -1,4 +1,4 @@
-import { Avatar, Button, Dropdown, Typography } from 'antd';
+import { Avatar, Dropdown, Typography } from 'antd';
 import { FC, ReactNode, useCallback, useMemo } from 'react';
 import { useQueryClient } from 'react-query';
 import { Link } from 'react-router-dom';

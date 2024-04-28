@@ -1,13 +1,11 @@
 import { AxiosError } from 'axios';
 import { useQuery, UseQueryResult } from 'react-query';
 
-import { RecordDTO } from '@entities/record/model/RecordDTO';
-import { RecordViewDTO } from '@entities/record/model/RecordViewDTO';
-
 import { AxiosUseQueryOptions } from '@shared/types';
 
 import { getRecords } from '../api/getRecords';
 import { RecordStatus } from '../model/RecordStatus';
+import { RecordViewDTO } from '../model/RecordViewDTO';
 import { TriggerTypeDTO } from '../model/TriggerTypeDTO';
 
 type Arguments = {
@@ -16,9 +14,9 @@ type Arguments = {
 };
 
 /**
- * хук для получения информации о компании
- * @param companyId id компании
- * @param options
+ * Хук получения записей
+ * @param status Статус записи
+ * @param triggersIds Триггеры записи
  */
 export function useGetRecords(
     args: Arguments, options?: AxiosUseQueryOptions<RecordViewDTO[], string[]>,
