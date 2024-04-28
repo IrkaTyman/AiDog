@@ -33,7 +33,7 @@ export const RecordChat: FC<Props> = typedMemo(function RecordChat({
             return;
         }
 
-        const topPosition = comment.offsetTop as number;
+        const topPosition = comment.offsetTop as number - comment.clientWidth;
         commentsScrollBlock.current.scrollTop = topPosition;
     }, [currentCommentId]);
 
