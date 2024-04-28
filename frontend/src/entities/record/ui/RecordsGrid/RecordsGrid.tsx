@@ -1,5 +1,5 @@
 import { Badge } from 'antd';
-import { FC, useCallback, useEffect, useMemo } from 'react';
+import { FC, useCallback, useMemo } from 'react';
 
 import { useGetRecords } from '@entities/record/lib/useGetRecords';
 import { RecordStatus } from '@entities/record/model/RecordStatus';
@@ -29,17 +29,13 @@ export const RecordsGrid: FC<Props> = typedMemo(function RecordsGrid({
 
     const { data: records } = useGetRecords({ status: parsedStatus, triggers: parsedTriggers });
 
-    useEffect(() => {
-        setStatus(RecordStatus.All);
-    }, [setStatus]);
-
     return (
         <div
             className={getBemClasses(styles, null, null, className)}
             data-testid={dataTestId}
         >
             <RecordsFilters
-                status={parsedStatus}
+                status={parsedStatus ?? RecordStatus.All}
                 setStatus={setStatus}
                 triggers={parsedTriggers}
                 setTriggers={setParsedTriggers}
