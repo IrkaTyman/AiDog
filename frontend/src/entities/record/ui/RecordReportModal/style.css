@@ -1,0 +1,17 @@
+.RecordReportModalTabs .ant-tabs-nav-list {
+    gap: 5px;
+}
+
+.RecordReportModalTabs .ant-tabs-nav::before {
+    display: none
+}
+
+.RecordReportModalTabs .ant-tabs-tab {
+    border-radius: 10px !important;
+}
+
+.RecordReportModalTabs .ant-tabs-tab-active .ant-tabs-tab-btn {
+    color: var(--grey-1) !important;
+}
+
+

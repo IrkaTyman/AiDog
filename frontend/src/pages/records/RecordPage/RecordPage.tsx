@@ -7,6 +7,7 @@ import { CreateReportModal } from '@features/record/ui/CreateReportModal';
 import { RecordChat, RecordTriggersConsole, RecordTriggersCounts, useGetRecord } from '@entities/record';
 import { RecordChatTimeline } from '@entities/record/ui/RecordChatTimeline';
 import { RecordConclusions } from '@entities/record/ui/RecordConclusions';
+import { RecordReportModal } from '@entities/record/ui/RecordReportModal';
 import { UserHeader } from '@entities/user';
 
 import Warning from '@shared/assets/icons/Warning.svg';
@@ -66,22 +67,24 @@ export const RecordPage: FC<Props> = typedMemo(function RecordPage({
                         <RecordConclusions />
 
                         {id
-                            ? <CreateReportModal
-                                recordId={id}
-                                triggerComponent={
-                                    open => (
-                                        <Button
-                                            type="primary"
-                                            color="#722ED1"
-                                            size="large"
-                                            onClick={open}
-                                            className={getBemClasses(styles, 'reportButton')}
-                                        >
+                            ? <div className={getBemClasses(styles, 'reports')}>
+                                <RecordReportModal />
+                                <CreateReportModal
+                                    recordId={id}
+                                    triggerComponent={
+                                        open => (
+                                            <Button
+                                                type="primary"
+                                                color="#722ED1"
+                                                size="large"
+                                                onClick={open}
+                                                className={getBemClasses(styles, 'reportButton')}
+                                            >
                                         Составить отчет
-                                        </Button>
-                                    )
-                                }
-                            />
+                                            </Button>
+                                        )
+                                    }
+                                /></div>
                             : null}
                     </div>
                 </div>

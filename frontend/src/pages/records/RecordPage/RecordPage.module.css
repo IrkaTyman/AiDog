@@ -38,8 +38,6 @@
 }
 
 .RecordPage__reportButton {
-    align-self: center;
-    justify-self: center;
     background-color: #722ED1;
 }
 
@@ -60,6 +58,15 @@
     grid-template-columns: 1fr 350px;
     grid-template-rows: 1fr auto;
     gap: var(--space-l);
+}
+
+.RecordPage__reports {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    align-items: center;
+    align-self: end;
+    justify-self: center;
 }
 
 .RecordPage .RecordPage__consoleTitle,
