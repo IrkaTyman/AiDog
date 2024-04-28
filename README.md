@@ -28,3 +28,25 @@
 
 В нашем сервисе триггеры/критерии для анализа комментариев пользователь может задавать самостоятельно.
 Администраторы смогут проверять свои гипотезы, основываясь на различных метриках, которые мы поможем собрать.
+
+### Инструкция запуска 
+
+```bash
+cd backend
+npm i 
+npm run start
+
+cd ..
+cd frontend
+npm i --force
+npm run build:prod
+```
+
+
+### Демонстрация решения
+[](https://raw.githubusercontent.com/CatDevelop/AiDog/main/system/Demo1.png)
+![AI Chat Inspector](https://raw.githubusercontent.com/CatDevelop/AiDog/main/system/Demo1.png "Auth")
+![AI Chat Inspector](https://raw.githubusercontent.com/CatDevelop/AiDog/main/system/Demo2.png "Main")
+![AI Chat Inspector](https://raw.githubusercontent.com/CatDevelop/AiDog/main/system/Demo3.png "Record")
+![AI Chat Inspector](https://raw.githubusercontent.com/CatDevelop/AiDog/main/system/Demo4.png "Settings")
+![AI Chat Inspector](https://raw.githubusercontent.com/CatDevelop/AiDog/main/system/Demo5.png "Scheme")
