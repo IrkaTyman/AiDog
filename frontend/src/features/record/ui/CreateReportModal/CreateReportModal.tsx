@@ -28,6 +28,7 @@ export const CreateReportModal: FC<Props> = typedMemo(function CreateReportModal
     const { mutate: create, isLoading } = useCreateReport({
         onSuccess: () => {
             queryClient.resetQueries(['records/get']);
+            setIsModalOpen(false);
         },
     });
 

@@ -5,7 +5,7 @@ import { CreateTriggerModal } from '@features/record/ui/CreateTriggerModal';
 import { DeleteTriggerButton } from '@features/record/ui/DeleteTriggerButton';
 import { EditTriggerModal } from '@features/record/ui/EditTriggerModal';
 
-import { TriggersTable } from '@entities/record/ui/TriggersTable';
+import { TriggersTable } from '@entities/record';
 import { UserHeader } from '@entities/user';
 
 import { getBemClasses, typedMemo } from '@shared/lib';

@@ -1,5 +1,8 @@
 import { CommentDTO } from './CommentDTO';
 import { RecordStatus } from './RecordStatus';
+import { RecordTriggerCountDTO } from './RecordTriggerCountDTO';
+import { ReportDTO } from './ReportDTO';
+import { ResultDTO } from './ResultDTO';
 
 export type RecordDTO = {
     'id': string;
@@ -7,9 +10,7 @@ export type RecordDTO = {
     'previewSrc': string;
     'status': RecordStatus;
     'comments': CommentDTO[];
-    'triggersCount':
-        {
-            'trigger': string;
-            'count': string;
-        }[];
+    'triggersCount': RecordTriggerCountDTO[];
+    reports: ReportDTO[];
+    results: ResultDTO[];
 };

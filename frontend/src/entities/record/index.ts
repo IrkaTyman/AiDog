@@ -17,3 +17,5 @@ export * from './model/TriggerDTO';
 export * from './model/TriggerTypeDTO';
 export * from './model/RecordDTO';
 export * from './model/RecordViewDTO';
+export * from './model/ResultDTO';
+export * from './model/ReportDTO';

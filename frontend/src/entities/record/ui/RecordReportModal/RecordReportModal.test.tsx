@@ -25,7 +25,7 @@ describe('entities/record /RecordReportModal', () => {
     });
 
     it('Компонент появился в DOM дереве', async () => {
-        render(<RecordReportModal />, { wrapper });
+        render(<RecordReportModal reports={[]} />, { wrapper });
 
         const component = await screen.findByTestId('RecordReportModal');
         expect(component).toBeInTheDocument();

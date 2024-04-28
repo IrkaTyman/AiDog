@@ -64,11 +64,17 @@ export const RecordPage: FC<Props> = typedMemo(function RecordPage({
                             <RecordTriggersCounts triggersCount={record?.triggersCount ?? []} />
                         </div>
 
-                        <RecordConclusions />
+                        <RecordConclusions
+                            results={record?.results ?? []}
+                            triggersCounts={record?.triggersCount ?? []}
+                            commentsCount={record?.comments.length ?? 0}
+                        />
 
                         {id
                             ? <div className={getBemClasses(styles, 'reports')}>
-                                <RecordReportModal />
+                                {record?.reports && record.reports.length > 0
+                                    ? <RecordReportModal reports={record?.reports} />
+                                    : null}
                                 <CreateReportModal
                                     recordId={id}
                                     triggerComponent={

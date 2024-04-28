@@ -25,7 +25,7 @@ describe('entities/record/RecordConclusions', () => {
     });
 
     it('Компонент появился в DOM дереве', async () => {
-        render(<RecordConclusions />, { wrapper });
+        render(<RecordConclusions results={[]} triggersCounts={[]} commentsCount={0} />, { wrapper });
 
         const component = await screen.findByTestId('RecordConclusions');
         expect(component).toBeInTheDocument();

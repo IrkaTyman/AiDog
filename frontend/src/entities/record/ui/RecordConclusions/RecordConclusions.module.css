@@ -39,6 +39,27 @@
     background-color: var(--red-6);
 }
 
+.RecordConclusions__trigger_level_highest.RecordConclusions__trigger_type_bad {
+    background-color: var(--red-6);
+}
+
+.RecordConclusions__trigger_level_high.RecordConclusions__trigger_type_bad {
+    background-color: var(--yellow-6);
+}
+
+.RecordConclusions__trigger_level_low.RecordConclusions__trigger_type_bad {
+    background-color: var(--lime-6);
+}
+
+.RecordConclusions__trigger_level_lowest.RecordConclusions__trigger_type_bad {
+    background-color: var(--green-6);
+}
+
+.RecordConclusions__trigger_level_highest .RecordConclusions__triggerIcon,
+.RecordConclusions__trigger_level_high .RecordConclusions__triggerIcon {
+    transform: rotate(180deg);
+}
+
 .RecordConclusions__triggerIcon {
     fill: var(--grey-1);
 }
@@ -52,7 +73,7 @@
 
 .RecordConclusions__conclusions {
     display: flex;
-    align-items: center;
+    align-items: start;
     gap: 20px;
     align-self: start;
     flex-wrap: wrap;

@@ -1,4 +1,4 @@
-import { Button, Form, Input, Modal, Tabs } from 'antd';
+import { Button, Modal, Tabs } from 'antd';
 import { FC, useCallback, useState } from 'react';
 import './style.css';
 
@@ -6,15 +6,19 @@ import { getBemClasses, typedMemo } from '@shared/lib';
 import { ClassNameProps, TestProps } from '@shared/types';
 
 import styles from './RecordReportModal.module.css';
+import { RecordDTO } from '../../model/RecordDTO';
 
-export type Props = ClassNameProps & TestProps & Readonly<{}>;
+export type Props = ClassNameProps & TestProps & Readonly<{
+    reports: RecordDTO['reports'];
+}>;
 
 export const RecordReportModal: FC<Props> = typedMemo(function RecordReportModal({
+    reports,
     className,
     'data-testid': dataTestId = 'RecordReportModal',
 }) {
     const [isModalOpen, setIsModalOpen] = useState(false);
-    const [currentReportId, setCurrentReportId] = useState('null');
+    const [currentReportId, setCurrentReportId] = useState(reports[0].id);
 
     const open = useCallback(() => {
         setIsModalOpen(true);
@@ -41,13 +45,13 @@ export const RecordReportModal: FC<Props> = typedMemo(function RecordReportModal
                 <Tabs
                     onChange={setCurrentReportId}
                     type="card"
+                    activeKey={currentReportId}
                     className="RecordReportModalTabs"
-                    items={new Array(3).fill(null).map((_, i) => {
-                        const id = String(i + 1);
+                    items={reports.map(report => {
                         return {
-                            label: `Tab ${id}`,
-                            key: id,
-                            children: `Content of Tab Pane ${id}`,
+                            label: `${report.user.firstName}`,
+                            key: report.id,
+                            children: report.report,
                         };
                     })}
                 />

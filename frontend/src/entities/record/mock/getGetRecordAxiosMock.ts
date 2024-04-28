@@ -93,6 +93,8 @@ export function getGetRecordAxiosMock(id: string): AxiosMockOptions<RecordDTO>[]
                             count: '1',
                         },
                     ],
+                    results: [],
+                    reports: [],
                 },
             },
         },
