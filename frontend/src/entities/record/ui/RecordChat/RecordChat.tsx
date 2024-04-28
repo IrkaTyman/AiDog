@@ -45,7 +45,7 @@ export const RecordChat: FC<Props> = typedMemo(function RecordChat({
                 {comments.map(comment => (
                     <div
                         key={comment.id}
-                        className={getBemClasses(styles, 'comment')}
+                        className={getBemClasses(styles, comment.id === currentCommentId ? 'comment_select' : 'comment', )}
                         id={`comment-${comment.id}`}
                     >
                         <div className={getBemClasses(styles, 'info')}>

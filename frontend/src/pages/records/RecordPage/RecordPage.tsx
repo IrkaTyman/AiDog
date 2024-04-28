@@ -23,7 +23,7 @@ export const RecordPage: FC<Props> = typedMemo(function RecordPage({
     const { id } = useParams<{id: string}>();
     const { data: record } = useGetRecord(id ?? '');
     const [commentIndex, setCommentIndex] = useState(0);
-    const commentId = useMemo(() => record?.comments[commentIndex]?.id, [record]);
+    const commentId = useMemo(() => record?.comments[commentIndex]?.id, [record, commentIndex]);
 
     return (
         <div
@@ -49,7 +49,11 @@ export const RecordPage: FC<Props> = typedMemo(function RecordPage({
                     </div>
 
                     <div className={getBemClasses(styles, 'innerGrid')}>
-                        <RecordTriggersConsole comments={record?.comments ?? []} />
+                        <RecordTriggersConsole
+                            comments={record?.comments ?? []}
+                            index={commentIndex}
+                            setIndex={setCommentIndex}
+                        />
 
                         <div className={getBemClasses(styles, 'statisticsWrapper')}>
                             <Typography.Title className={getBemClasses(styles, 'statisticsTitle')}>

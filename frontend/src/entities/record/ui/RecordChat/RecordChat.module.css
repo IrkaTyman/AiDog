@@ -29,12 +29,21 @@
 .RecordChat__comment {
     display: flex;
     flex-direction: column;
+    padding: 5px;
+}
+
+.RecordChat__comment_select {
+    display: flex;
+    flex-direction: column;
+    background: #434343;
+    padding: 7px;
+    border-radius: 10px;
 }
 
 .RecordChat__info {
     display: flex;
     justify-content: space-between;
-    gap: 5px;
+    gap: 7px;
 }
 
 .RecordChat__user,

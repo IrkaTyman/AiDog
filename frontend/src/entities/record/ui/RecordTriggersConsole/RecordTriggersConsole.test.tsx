@@ -25,7 +25,7 @@ describe('entities/record/RecordTriggersConsole', () => {
     });
 
     it('Компонент появился в DOM дереве', async () => {
-        render(<RecordTriggersConsole comments={[]} />, { wrapper });
+        render(<RecordTriggersConsole comments={[]} index={0} setIndex={() => {}}/>, { wrapper });
 
         const component = await screen.findByTestId('RecordTriggersConsole');
         expect(component).toBeInTheDocument();
