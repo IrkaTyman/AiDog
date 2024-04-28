@@ -28,7 +28,13 @@ export const RecordChat: FC<Props> = typedMemo(function RecordChat({
             return;
         }
 
-        commentsScrollBlock.current.querySelector(`#comment-${currentCommentId}`)?.scrollIntoView();
+        const comment = commentsScrollBlock.current.querySelector(`#comment-${currentCommentId}`) as HTMLElement;
+        if (!comment) {
+            return;
+        }
+
+        const topPosition = comment.offsetTop as number;
+        commentsScrollBlock.current.scrollTop = topPosition;
     }, [currentCommentId]);
 
     return (

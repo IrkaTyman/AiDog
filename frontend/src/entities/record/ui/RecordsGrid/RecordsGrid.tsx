@@ -1,3 +1,4 @@
+import { Badge } from 'antd';
 import { FC, useCallback, useEffect, useMemo } from 'react';
 
 import { useGetRecords } from '@entities/record/lib/useGetRecords';
@@ -8,8 +9,6 @@ import { RecordsFilters } from '@entities/record/ui/RecordsGrid/RecordsFilters';
 import { useQueryParamState } from '@shared/hooks/useQueryParamState';
 import { getBemClasses, typedMemo } from '@shared/lib';
 import { ClassNameProps, TestProps } from '@shared/types';
-
-import {Badge} from 'antd';
 
 import styles from './RecordsGrid.module.css';
 
@@ -31,8 +30,8 @@ export const RecordsGrid: FC<Props> = typedMemo(function RecordsGrid({
     const { data: records } = useGetRecords({ status: parsedStatus, triggers: parsedTriggers });
 
     useEffect(() => {
-        setStatus(RecordStatus.New);
-    }, []);
+        setStatus(RecordStatus.All);
+    }, [setStatus]);
 
     return (
         <div
@@ -48,11 +47,11 @@ export const RecordsGrid: FC<Props> = typedMemo(function RecordsGrid({
 
             <div className={getBemClasses(styles, 'records')}>
                 {records?.map(record => {
-                    return record.status === "old" ?
-                        <RecordCard record={record} /> :
-                        <Badge.Ribbon text="NEW" color="red">
+                    return record.status === 'old'
+                        ? <RecordCard record={record} />
+                        : <Badge.Ribbon text="NEW" color="red">
                             <RecordCard record={record} />
-                        </Badge.Ribbon>
+                        </Badge.Ribbon>;
                 })}
             </div>
         </div>

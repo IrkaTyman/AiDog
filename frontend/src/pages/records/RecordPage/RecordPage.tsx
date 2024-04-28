@@ -24,8 +24,8 @@ export const RecordPage: FC<Props> = typedMemo(function RecordPage({
 }) {
     const { id } = useParams<{id: string}>();
     const { data: record } = useGetRecord(id ?? '');
-    const [commentIndex, setCommentIndex] = useState(0);
-    const commentId = useMemo(() => record?.comments[commentIndex]?.id, [record, commentIndex]);
+    const [commentIndex, setCommentIndex] = useState(1);
+    const commentId = useMemo(() => record?.comments[commentIndex - 1]?.id, [record, commentIndex]);
 
     return (
         <div
