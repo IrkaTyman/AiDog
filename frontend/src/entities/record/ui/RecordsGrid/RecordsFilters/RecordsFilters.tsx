@@ -39,7 +39,7 @@ export const RecordsFilters: FC<Props> = typedMemo(function RecordsFilters({
         types?.filter(({ id }) => triggers.includes(id)) ?? [],
     [triggers, types]);
     const triggersOptions = useMemo<MenuProps['items']>(
-        () => types?.filter(({ id }) => !triggers.includes(id)).map(type => ({
+        () => types?.filter(({ id, isActive }) => !triggers.includes(id) && isActive).map(type => ({
             label: type.name,
             key: type.id,
         })) ?? [],
@@ -99,7 +99,7 @@ export const RecordsFilters: FC<Props> = typedMemo(function RecordsFilters({
 
             <div>
                 <Select
-                    defaultValue={"all"}
+                    defaultValue={'all'}
                     value={status}
                     style={{ width: 200 }}
                     onChange={setStatus}
