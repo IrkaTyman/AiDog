@@ -27,11 +27,6 @@ export class RecordService {
         const comments = createRecordDto.comments;
         const triggers = await this.triggerRepository.find({where: {isActive: true}});
 
-        const newRecord = await this.recordRepository.save({
-            name: createRecordDto.name,
-            previewSrc: createRecordDto.previewSrc
-        });
-
         let results = await fetch(
             "http://89.208.216.16/make_conclusions", {
                 method: "post",
@@ -48,13 +43,6 @@ export class RecordService {
             .catch(error => {
                 throw new BadRequestException()
             })
-
-        for (let result in results) {
-            await this.resultService.create({
-                result,
-                recordId: newRecord.id
-            })
-        }
 
         let commentsWithTriggers = await fetch(
             "http://89.208.216.16/process_comments", {
@@ -73,6 +61,18 @@ export class RecordService {
             .catch(error => {
                 throw new BadRequestException()
             })
+
+        const newRecord = await this.recordRepository.save({
+            name: createRecordDto.name,
+            previewSrc: createRecordDto.previewSrc
+        });
+
+        for (let result of results) {
+            await this.resultService.create({
+                result,
+                recordId: newRecord.id
+            })
+        }
 
         for (let comment of commentsWithTriggers.comments) {
             const {commentID} = await this.commentService.create({

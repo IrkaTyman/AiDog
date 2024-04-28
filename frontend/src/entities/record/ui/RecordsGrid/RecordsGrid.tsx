@@ -9,6 +9,8 @@ import { useQueryParamState } from '@shared/hooks/useQueryParamState';
 import { getBemClasses, typedMemo } from '@shared/lib';
 import { ClassNameProps, TestProps } from '@shared/types';
 
+import {Badge} from 'antd';
+
 import styles from './RecordsGrid.module.css';
 
 export type Props = ClassNameProps & TestProps & Readonly<{}>;
@@ -45,7 +47,13 @@ export const RecordsGrid: FC<Props> = typedMemo(function RecordsGrid({
             />
 
             <div className={getBemClasses(styles, 'records')}>
-                {records?.map(record => <RecordCard record={record} />)}
+                {records?.map(record => {
+                    return record.status === "old" ?
+                        <RecordCard record={record} /> :
+                        <Badge.Ribbon text="NEW" color="red">
+                            <RecordCard record={record} />
+                        </Badge.Ribbon>
+                })}
             </div>
         </div>
     );
