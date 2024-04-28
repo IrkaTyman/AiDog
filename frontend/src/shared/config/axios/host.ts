@@ -1,1 +1,1 @@
-export const HOST = 'https://pincode-dev.ru/backjs/api/';
+export const HOST = 'https://pincode-dev.ru/backjs/api';
