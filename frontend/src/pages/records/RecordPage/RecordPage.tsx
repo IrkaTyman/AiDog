@@ -6,6 +6,7 @@ import { CreateReportModal } from '@features/record/ui/CreateReportModal';
 
 import { RecordChat, RecordTriggersConsole, RecordTriggersCounts, useGetRecord } from '@entities/record';
 import { RecordChatTimeline } from '@entities/record/ui/RecordChatTimeline';
+import { RecordConclusions } from '@entities/record/ui/RecordConclusions';
 import { UserHeader } from '@entities/user';
 
 import Warning from '@shared/assets/icons/Warning.svg';
@@ -62,9 +63,7 @@ export const RecordPage: FC<Props> = typedMemo(function RecordPage({
                             <RecordTriggersCounts triggersCount={record?.triggersCount ?? []} />
                         </div>
 
-                        <div>
-
-                        </div>
+                        <RecordConclusions />
 
                         {id
                             ? <CreateReportModal

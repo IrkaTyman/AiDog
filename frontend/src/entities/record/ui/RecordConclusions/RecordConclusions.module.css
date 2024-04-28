@@ -1,0 +1,80 @@
+.RecordConclusions {
+    background-color: var(--grey-12);
+    border-radius: 20px;
+    padding: 20px 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 60px;
+}
+
+.RecordConclusions__triggers {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    flex-wrap: wrap;
+}
+
+.RecordConclusions__trigger {
+    padding: 1px 6px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.RecordConclusions__trigger_level_highest {
+    background-color: var(--green-6);
+}
+
+.RecordConclusions__trigger_level_high {
+    background-color: var(--lime-6);
+}
+
+.RecordConclusions__trigger_level_low {
+    background-color: var(--yellow-6);
+}
+
+.RecordConclusions__trigger_level_lowest {
+    background-color: var(--red-6);
+}
+
+.RecordConclusions__triggerIcon {
+    fill: var(--grey-1);
+}
+
+.RecordConclusions .RecordConclusions__triggerName {
+    color: var(--grey-1);
+    font-size: 14px;
+    font-weight: var(--font-weight-semibold);
+    margin: 0;
+}
+
+.RecordConclusions__conclusions {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    align-self: start;
+    flex-wrap: wrap;
+}
+
+.RecordConclusions__conclusion {
+    flex-basis: 20%;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.RecordConclusions .RecordConclusions__conclusionTitle {
+    margin: 0;
+    font-weight: var(--font-weight-bold);
+    font-size: 16px;
+    color: var(--grey-1);
+}
+
+.RecordConclusions .RecordConclusions__conclusionText {
+    margin: 0;
+    font-size: 14px;
+    color: var(--grey-1);
+}
